@@ -2,6 +2,39 @@
 package depot;
 
 class Depot {
+	unique ref Train[*] trains;
+}
+
+abstract class Train {
+	attr EString name;
+}
+
+class IntercityTrain extends Train {
+	unique ref Coach[2..*] coaches;
+}
+
+class RegionalTrain extends Train {
+	unique ref Coach[1..*] coaches;
+}
+
+enum PassengerClass {
+	FirstClass = 1;
+	SecondClass = 2;
+}
+
+abstract class Coach {}
+
+class Locomotive extends Coach {}
+
+abstract class CoachWithId extends Coach {
+	attr EInt identifier;
+}
+
+class PassengerCoach extends CoachWithId {
+	attr PassengerClass passengerClass;
+}
+
+class DiningCoach extends CoachWithId {
 	
 }
 
