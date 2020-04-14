@@ -1,0 +1,11 @@
+@namespace(uri="http://mdse.org/pts/timetable", prefix="timetable")
+package timetable;
+
+import "platform:/resource/org.mdse.pts.network/model/Network.ecore";
+import "platform:/resource/org.mdse.pts.depot/model/Depot.ecore";
+
+class Timetable {
+	
+}
+
+//TODO: Define metamodel

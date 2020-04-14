@@ -1,0 +1,21 @@
+@namespace(uri="http://mdse.org/pts/network", prefix="network")
+package network;
+
+class Network {
+	attr String[1] name; 
+	val Station[*] stations;
+	val Leg[*] legs;
+}
+
+class Station {
+	attr String[1] name;
+	
+	ref Leg[*]#stations legs;
+}
+
+class Leg {
+	attr String[?] name;
+	attr Integer[1] distance;
+	
+	ref Station[2]#legs stations;
+}

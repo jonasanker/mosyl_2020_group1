@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stationplan:StationPlan xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:stationplan="http://mdse.org/gt/stationplan">
+  <trainStations identifier="Aarhus Central" incomingConnections="//@trainStations.1/@outgoingConnections.0 //@trainStations.1/@outgoingConnections.1">
+    <outgoingConnections identifier="E45" distanceInMeters="146213" targetStation="//@trainStations.2"/>
+  </trainStations>
+  <trainStations identifier="Copenhagen Central" incomingConnections="//@trainStations.2/@outgoingConnections.0">
+    <outgoingConnections identifier="E501" distanceInMeters="307358" targetStation="//@trainStations.0"/>
+    <outgoingConnections identifier="S21" distanceInMeters="187172" targetStation="//@trainStations.0"/>
+  </trainStations>
+  <trainStations identifier="Odense Central" incomingConnections="//@trainStations.0/@outgoingConnections.0">
+    <outgoingConnections identifier="E20" distanceInMeters="168415" targetStation="//@trainStations.1"/>
+  </trainStations>
+</stationplan:StationPlan>

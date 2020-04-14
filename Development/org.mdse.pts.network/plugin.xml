@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Network -->
+      <package
+            uri="http://mdse.org/pts/network"
+            class="org.mdse.pts.network.NetworkPackage"
+            genModel="model/Network.genmodel"/>
+   </extension>
+
+</plugin>

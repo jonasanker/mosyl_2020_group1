@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/org.mdse.pts.schedule/src-gen" editDirectory="/org.mdse.pts.schedule.edit/src-gen"
+    editorDirectory="/org.mdse.pts.schedule.editor/src-gen" modelPluginID="org.mdse.pts.schedule"
+    modelName="Schedule" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    testsDirectory="/org.mdse.pts.schedule.tests/src-gen" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>Schedule.ecore</foreignModel>
+  <genPackages prefix="Schedule" basePackage="org.mdse.pts" disposableProviderFactory="true"
+      ecorePackage="Schedule.ecore#/">
+    <genClasses ecoreClass="Schedule.ecore#//Schedule"/>
+  </genPackages>
+</genmodel:GenModel>

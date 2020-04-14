@@ -1,0 +1,11 @@
+@namespace(uri="http://mdse.org/pts/schedule", prefix="schedule")
+package schedule;
+
+import "platform:/resource/org.mdse.pts.network/model/Network.ecore";
+import "platform:/resource/org.mdse.pts.depot/model/Depot.ecore";
+
+class Schedule {
+	
+}
+
+//TODO: Define metamodel

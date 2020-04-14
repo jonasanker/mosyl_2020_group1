@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.mdse.gt.stationplan.edit;singleton:=true
+Automatic-Module-Name: org.mdse.gt.stationplan.edit
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .
+Bundle-Activator: org.mdse.gt.stationplan.provider.StationPlanEditPlugin$Implementation
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.mdse.gt.stationplan.provider
+Require-Bundle: org.eclipse.core.runtime,
+ org.mdse.gt.stationplan;visibility:=reexport,
+ org.eclipse.emf.edit;visibility:=reexport
+Bundle-ActivationPolicy: lazy

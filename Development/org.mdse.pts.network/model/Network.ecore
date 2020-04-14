@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="network" nsURI="http://mdse.org/pts/network" nsPrefix="network">
+  <eClassifiers xsi:type="ecore:EClass" name="Network">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stations" upperBound="-1"
+        eType="#//Station" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="legs" upperBound="-1" eType="#//Leg"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Station">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="legs" upperBound="-1" eType="#//Leg"
+        eOpposite="#//Leg/stations"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Leg">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="distance" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stations" lowerBound="2"
+        upperBound="2" eType="#//Station" eOpposite="#//Station/legs"/>
+  </eClassifiers>
+</ecore:EPackage>

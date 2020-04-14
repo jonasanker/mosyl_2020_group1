@@ -1,0 +1,8 @@
+@namespace(uri="http://mdse.org/pts/depot", prefix="depot")
+package depot;
+
+class Depot {
+	
+}
+
+//TODO: Define metamodel
