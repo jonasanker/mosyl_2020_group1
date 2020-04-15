@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="timetable" nsURI="http://mdse.org/pts/timetable" nsPrefix="timetable">
-  <eClassifiers xsi:type="ecore:EClass" name="Timetable"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Timetable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="station" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arrivals" upperBound="-1"
+        eType="#//Arrival"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="departures" upperBound="-1"
+        eType="#//Departure"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Entry" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="weekDay" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="platform" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="train" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Arrival" eSuperTypes="#//Entry">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="previousStation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Departure" eSuperTypes="#//Entry">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nextStation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
 </ecore:EPackage>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
-    modelDirectory="/org.mdse.pts.timetable/src-gen" editDirectory="/org.mdse.pts.timetable.edit/src-gen"
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.mdse.pts.timetable/src-gen" editDirectory="/org.mdse.pts.timetable.edit/src-gen"
     editorDirectory="/org.mdse.pts.timetable.editor/src-gen" modelPluginID="org.mdse.pts.timetable"
     modelName="Timetable" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     testsDirectory="/org.mdse.pts.timetable.tests/src-gen" importerID="org.eclipse.emf.importer.ecore"
@@ -8,6 +8,22 @@
   <foreignModel>Timetable.ecore</foreignModel>
   <genPackages prefix="Timetable" basePackage="org.mdse.pts" disposableProviderFactory="true"
       ecorePackage="Timetable.ecore#/">
-    <genClasses ecoreClass="Timetable.ecore#//Timetable"/>
+    <genClasses ecoreClass="Timetable.ecore#//Timetable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Timetable.ecore#//Timetable/station"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Timetable.ecore#//Timetable/arrivals"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Timetable.ecore#//Timetable/departures"/>
+    </genClasses>
+    <genClasses ecoreClass="Timetable.ecore#//Entry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Timetable.ecore#//Entry/weekDay"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Timetable.ecore#//Entry/time"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Timetable.ecore#//Entry/platform"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Timetable.ecore#//Entry/train"/>
+    </genClasses>
+    <genClasses ecoreClass="Timetable.ecore#//Arrival">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Timetable.ecore#//Arrival/previousStation"/>
+    </genClasses>
+    <genClasses ecoreClass="Timetable.ecore#//Departure">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Timetable.ecore#//Departure/nextStation"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>
