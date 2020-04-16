@@ -1,11 +1,67 @@
 @namespace(uri="http://mdse.org/pts/schedule", prefix="schedule")
 package schedule;
 
-import "platform:/resource/org.mdse.pts.network/model/Network.ecore";
 import "platform:/resource/org.mdse.pts.depot/model/Depot.ecore";
+import "platform:/resource/org.mdse.pts.network/model/Network.ecore";
 
 class Schedule {
-	
+	val TrainSchedule[*] trainschedules;
+	ref network.Network[1] network;
+	ref depot.Depot[+] depots;
 }
 
-//TODO: Define metamodel
+class TrainSchedule {
+	ref depot.Train[1] train;
+	ref Route[1] route;
+	val Frequency[+] frequency;
+}
+
+class Route {
+	val Stop[*] stop;
+}
+
+abstract class Stop {
+}
+
+class ViaStop extends Stop {
+	ref network.Leg[1] Leg;
+}
+
+class StationStop extends Stop {
+	ref network.Station[1] Station;
+	attr int[1] Platform;
+	attr int[1] Duration;
+	attr boolean[1] ShouldTurnAround;
+}
+
+abstract class Frequency {
+}
+
+class SingleDayFrequency extends Frequency {
+	val DepartureTime[+] departuretimes;
+	val DepartureDay[1] departureday;
+}
+
+class MultipleDaysFrequency extends Frequency {
+	val DepartureTime[1] departuretime;
+	val DepartureDay[1..7] departuredays;
+}
+
+class DepartureTime {
+	attr int[1] hour;
+	attr int[1] minutes;
+}
+
+class DepartureDay {
+	attr WeekDay[1] weekday;
+}
+
+enum WeekDay {
+	MONDAY = 0;
+	TUESDAY = 1;
+	WEDNESDAY = 2;
+	THURSDAY = 3;
+	FRIDAY = 4;
+	SATURDAY = 5;
+	SUNDAY = 6;
+}
