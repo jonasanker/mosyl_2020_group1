@@ -8,6 +8,24 @@
   <foreignModel>Timetable.ecore</foreignModel>
   <genPackages prefix="Timetable" basePackage="org.mdse.pts" disposableProviderFactory="true"
       ecorePackage="Timetable.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Timetable.ecore#//WeekDay">
+      <genEnumLiterals ecoreEnumLiteral="Timetable.ecore#//WeekDay/MONDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="Timetable.ecore#//WeekDay/TUESDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="Timetable.ecore#//WeekDay/WEDNESDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="Timetable.ecore#//WeekDay/THURSDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="Timetable.ecore#//WeekDay/FRIDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="Timetable.ecore#//WeekDay/SATURDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="Timetable.ecore#//WeekDay/SUNDAY"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Timetable.ecore#//WeekDay.1">
+      <genEnumLiterals ecoreEnumLiteral="Timetable.ecore#//WeekDay.1/MONDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="Timetable.ecore#//WeekDay.1/TUESDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="Timetable.ecore#//WeekDay.1/WEDNESDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="Timetable.ecore#//WeekDay.1/THURSDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="Timetable.ecore#//WeekDay.1/FRIDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="Timetable.ecore#//WeekDay.1/SATURDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="Timetable.ecore#//WeekDay.1/SUNDAY"/>
+    </genEnums>
     <genClasses ecoreClass="Timetable.ecore#//Timetable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Timetable.ecore#//Timetable/station"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Timetable.ecore#//Timetable/arrivals"/>

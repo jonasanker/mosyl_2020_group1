@@ -11,7 +11,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Entry" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="weekDay" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        eType="#//WeekDay"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="platform" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -22,5 +22,23 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Departure" eSuperTypes="#//Entry">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="nextStation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="WeekDay">
+    <eLiterals name="MONDAY"/>
+    <eLiterals name="TUESDAY" value="1"/>
+    <eLiterals name="WEDNESDAY" value="2"/>
+    <eLiterals name="THURSDAY" value="3"/>
+    <eLiterals name="FRIDAY" value="4"/>
+    <eLiterals name="SATURDAY" value="5"/>
+    <eLiterals name="SUNDAY" value="6"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="WeekDay">
+    <eLiterals name="MONDAY"/>
+    <eLiterals name="TUESDAY" value="1"/>
+    <eLiterals name="WEDNESDAY" value="2"/>
+    <eLiterals name="THURSDAY" value="3"/>
+    <eLiterals name="FRIDAY" value="4"/>
+    <eLiterals name="SATURDAY" value="5"/>
+    <eLiterals name="SUNDAY" value="6"/>
   </eClassifiers>
 </ecore:EPackage>
