@@ -5,19 +5,13 @@ package org.mdse.pts.network.impl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.mdse.pts.network.Leg;
 import org.mdse.pts.network.NetworkPackage;
 import org.mdse.pts.network.Station;
@@ -117,38 +111,9 @@ public class StationImpl extends MinimalEObjectImpl.Container implements Station
 	@Override
 	public EList<Leg> getLegs() {
 		if (legs == null) {
-			legs = new EObjectWithInverseResolvingEList.ManyInverse<Leg>(Leg.class, this, NetworkPackage.STATION__LEGS, NetworkPackage.LEG__STATIONS);
+			legs = new EObjectResolvingEList<Leg>(Leg.class, this, NetworkPackage.STATION__LEGS);
 		}
 		return legs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case NetworkPackage.STATION__LEGS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getLegs()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case NetworkPackage.STATION__LEGS:
-				return ((InternalEList<?>)getLegs()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

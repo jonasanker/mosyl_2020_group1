@@ -62,7 +62,8 @@ public class LegItemProvider
 
 			addNamePropertyDescriptor(object);
 			addDistancePropertyDescriptor(object);
-			addStationsPropertyDescriptor(object);
+			addStation1PropertyDescriptor(object);
+			addStation2PropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -112,19 +113,41 @@ public class LegItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Stations feature.
+	 * This adds a property descriptor for the Station1 feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addStationsPropertyDescriptor(Object object) {
+	protected void addStation1PropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Leg_stations_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Leg_stations_feature", "_UI_Leg_type"),
-				 NetworkPackage.Literals.LEG__STATIONS,
+				 getString("_UI_Leg_station1_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Leg_station1_feature", "_UI_Leg_type"),
+				 NetworkPackage.Literals.LEG__STATION1,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Station2 feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addStation2PropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Leg_station2_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Leg_station2_feature", "_UI_Leg_type"),
+				 NetworkPackage.Literals.LEG__STATION2,
 				 true,
 				 false,
 				 true,

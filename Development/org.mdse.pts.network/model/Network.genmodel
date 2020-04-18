@@ -20,7 +20,8 @@
     <genClasses ecoreClass="Network.ecore#//Leg">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Network.ecore#//Leg/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Network.ecore#//Leg/distance"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Network.ecore#//Leg/stations"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Network.ecore#//Leg/station1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Network.ecore#//Leg/station2"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

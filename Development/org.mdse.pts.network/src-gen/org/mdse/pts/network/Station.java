@@ -20,7 +20,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see org.mdse.pts.network.NetworkPackage#getStation()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='nonEmptyLegNamesMustBeUnique legMustHaveANameIfMoreThanOneLegBetweenTwoStations'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot nonEmptyLegNamesMustBeUnique='\n\t\t\tlegs -&gt; forAll(l1 |\n\t\t\t\t\tlegs -&gt; forAll(l2 |\n\t\t\t\t\t\tl1 &lt;&gt; l2 implies l1.name &lt;&gt; l2.name))' legMustHaveANameIfMoreThanOneLegBetweenTwoStations='\n\t\t\tlegs -&gt; forAll(l1 |\n\t\t\t\t\tlegs -&gt; forAll(l2 |\n\t\t\t\t\t\tl1 &lt;&gt; l2 \n\t\t\t\t\t\tand\n\t\t\t\t\t\tl1.station1 = l2.station1 and l1.station2 = l2.station2\n\t\t\t\t\t\tor \n\t\t\t\t\t\tl1.station1 = l2.station2 and l1.station2 = l2.station1\n\t\t\t\t\t\timplies\n\t\t\t\t\t\tl1.name.size() &gt; 0 and l2.name.size() &gt; 0\n\t\t\t\t\t)\n\t\t\t\t)'"
  * @generated
  */
 public interface Station extends EObject {
@@ -49,13 +50,11 @@ public interface Station extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Legs</b></em>' reference list.
 	 * The list contents are of type {@link org.mdse.pts.network.Leg}.
-	 * It is bidirectional and its opposite is '{@link org.mdse.pts.network.Leg#getStations <em>Stations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Legs</em>' reference list.
 	 * @see org.mdse.pts.network.NetworkPackage#getStation_Legs()
-	 * @see org.mdse.pts.network.Leg#getStations
-	 * @model opposite="stations"
+	 * @model
 	 * @generated
 	 */
 	EList<Leg> getLegs();

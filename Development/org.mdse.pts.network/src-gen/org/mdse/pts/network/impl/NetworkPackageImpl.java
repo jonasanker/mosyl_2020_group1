@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.mdse.pts.network.Leg;
@@ -14,6 +15,7 @@ import org.mdse.pts.network.Network;
 import org.mdse.pts.network.NetworkFactory;
 import org.mdse.pts.network.NetworkPackage;
 import org.mdse.pts.network.Station;
+import org.mdse.pts.network.util.NetworkValidator;
 
 /**
  * <!-- begin-user-doc -->
@@ -95,6 +97,16 @@ public class NetworkPackageImpl extends EPackageImpl implements NetworkPackage {
 
 		// Initialize created meta-data
 		theNetworkPackage.initializePackageContents();
+
+		// Register package validator
+		EValidator.Registry.INSTANCE.put
+			(theNetworkPackage,
+			 new EValidator.Descriptor() {
+				 @Override
+				 public EValidator getEValidator() {
+					 return NetworkValidator.INSTANCE;
+				 }
+			 });
 
 		// Mark meta-data to indicate it can't be changed
 		theNetworkPackage.freeze();
@@ -210,8 +222,18 @@ public class NetworkPackageImpl extends EPackageImpl implements NetworkPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getLeg_Stations() {
+	public EReference getLeg_Station1() {
 		return (EReference)legEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getLeg_Station2() {
+		return (EReference)legEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -255,7 +277,8 @@ public class NetworkPackageImpl extends EPackageImpl implements NetworkPackage {
 		legEClass = createEClass(LEG);
 		createEAttribute(legEClass, LEG__NAME);
 		createEAttribute(legEClass, LEG__DISTANCE);
-		createEReference(legEClass, LEG__STATIONS);
+		createEReference(legEClass, LEG__STATION1);
+		createEReference(legEClass, LEG__STATION2);
 	}
 
 	/**
@@ -295,15 +318,81 @@ public class NetworkPackageImpl extends EPackageImpl implements NetworkPackage {
 
 		initEClass(stationEClass, Station.class, "Station", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStation_Name(), ecorePackage.getEString(), "name", null, 1, 1, Station.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStation_Legs(), this.getLeg(), this.getLeg_Stations(), "legs", null, 0, -1, Station.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStation_Legs(), this.getLeg(), null, "legs", null, 0, -1, Station.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(legEClass, Leg.class, "Leg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLeg_Name(), ecorePackage.getEString(), "name", null, 0, 1, Leg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLeg_Distance(), ecorePackage.getEIntegerObject(), "distance", null, 1, 1, Leg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLeg_Stations(), this.getStation(), this.getStation_Legs(), "stations", null, 2, 2, Leg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLeg_Station1(), this.getStation(), null, "station1", null, 1, 1, Leg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLeg_Station2(), this.getStation(), null, "station2", null, 1, 1, Leg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/OCL/Import
+		createImportAnnotations();
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
+		// http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot
+		createPivotAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/OCL/Import</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createImportAnnotations() {
+		String source = "http://www.eclipse.org/OCL/Import";
+		addAnnotation
+		  (this,
+		   source,
+		   new String[] {
+			   "ecore", "http://www.eclipse.org/emf/2002/Ecore"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";
+		addAnnotation
+		  (this,
+		   source,
+		   new String[] {
+			   "invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+			   "settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+			   "validationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"
+		   });
+		addAnnotation
+		  (stationEClass,
+		   source,
+		   new String[] {
+			   "constraints", "nonEmptyLegNamesMustBeUnique legMustHaveANameIfMoreThanOneLegBetweenTwoStations"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createPivotAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";
+		addAnnotation
+		  (stationEClass,
+		   source,
+		   new String[] {
+			   "nonEmptyLegNamesMustBeUnique", "\n\t\t\tlegs -> forAll(l1 |\n\t\t\t\t\tlegs -> forAll(l2 |\n\t\t\t\t\t\tl1 <> l2 implies l1.name <> l2.name))",
+			   "legMustHaveANameIfMoreThanOneLegBetweenTwoStations", "\n\t\t\tlegs -> forAll(l1 |\n\t\t\t\t\tlegs -> forAll(l2 |\n\t\t\t\t\t\tl1 <> l2 \n\t\t\t\t\t\tand\n\t\t\t\t\t\tl1.station1 = l2.station1 and l1.station2 = l2.station2\n\t\t\t\t\t\tor \n\t\t\t\t\t\tl1.station1 = l2.station2 and l1.station2 = l2.station1\n\t\t\t\t\t\timplies\n\t\t\t\t\t\tl1.name.size() > 0 and l2.name.size() > 0\n\t\t\t\t\t)\n\t\t\t\t)"
+		   });
 	}
 
 } //NetworkPackageImpl

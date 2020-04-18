@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see org.mdse.pts.network.NetworkFactory
  * @model kind="package"
+ *        annotation="http://www.eclipse.org/OCL/Import ecore='http://www.eclipse.org/emf/2002/Ecore'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore invocationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' settingDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' validationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot'"
  * @generated
  */
 public interface NetworkPackage extends EPackage {
@@ -186,13 +188,22 @@ public interface NetworkPackage extends EPackage {
 	int LEG__DISTANCE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Stations</b></em>' reference list.
+	 * The feature id for the '<em><b>Station1</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LEG__STATIONS = 2;
+	int LEG__STATION1 = 2;
+
+	/**
+	 * The feature id for the '<em><b>Station2</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LEG__STATION2 = 3;
 
 	/**
 	 * The number of structural features of the '<em>Leg</em>' class.
@@ -201,7 +212,7 @@ public interface NetworkPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LEG_FEATURE_COUNT = 3;
+	int LEG_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Leg</em>' class.
@@ -321,15 +332,26 @@ public interface NetworkPackage extends EPackage {
 	EAttribute getLeg_Distance();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.mdse.pts.network.Leg#getStations <em>Stations</em>}'.
+	 * Returns the meta object for the reference '{@link org.mdse.pts.network.Leg#getStation1 <em>Station1</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Stations</em>'.
-	 * @see org.mdse.pts.network.Leg#getStations()
+	 * @return the meta object for the reference '<em>Station1</em>'.
+	 * @see org.mdse.pts.network.Leg#getStation1()
 	 * @see #getLeg()
 	 * @generated
 	 */
-	EReference getLeg_Stations();
+	EReference getLeg_Station1();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.mdse.pts.network.Leg#getStation2 <em>Station2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Station2</em>'.
+	 * @see org.mdse.pts.network.Leg#getStation2()
+	 * @see #getLeg()
+	 * @generated
+	 */
+	EReference getLeg_Station2();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -441,12 +463,20 @@ public interface NetworkPackage extends EPackage {
 		EAttribute LEG__DISTANCE = eINSTANCE.getLeg_Distance();
 
 		/**
-		 * The meta object literal for the '<em><b>Stations</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Station1</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference LEG__STATIONS = eINSTANCE.getLeg_Stations();
+		EReference LEG__STATION1 = eINSTANCE.getLeg_Station1();
+
+		/**
+		 * The meta object literal for the '<em><b>Station2</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LEG__STATION2 = eINSTANCE.getLeg_Station2();
 
 	}
 

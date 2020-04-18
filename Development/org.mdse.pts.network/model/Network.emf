@@ -1,21 +1,39 @@
+@"http://www.eclipse.org/OCL/Import"(ecore="http://www.eclipse.org/emf/2002/Ecore")
+@Ecore(invocationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", settingDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", validationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot")
 @namespace(uri="http://mdse.org/pts/network", prefix="network")
 package network;
 
 class Network {
-	attr String[1] name; 
+	attr String[1] name;
 	val Station[*] stations;
 	val Leg[*] legs;
 }
 
+@Ecore(constraints="nonEmptyLegNamesMustBeUnique legMustHaveANameIfMoreThanOneLegBetweenTwoStations")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(nonEmptyLegNamesMustBeUnique="
+			legs -> forAll(l1 |
+					legs -> forAll(l2 |
+						l1 <> l2 implies l1.name <> l2.name))", legMustHaveANameIfMoreThanOneLegBetweenTwoStations="
+			legs -> forAll(l1 |
+					legs -> forAll(l2 |
+						l1 <> l2 
+						and
+						l1.station1 = l2.station1 and l1.station2 = l2.station2
+						or 
+						l1.station1 = l2.station2 and l1.station2 = l2.station1
+						implies
+						l1.name.size() > 0 and l2.name.size() > 0
+					)
+				)")
 class Station {
 	attr String[1] name;
-	
-	ref Leg[*]#stations legs;
+	ref Leg[*] legs;
 }
 
 class Leg {
-	attr String[?] name;
+	attr String name;
 	attr Integer[1] distance;
-	
-	ref Station[2]#legs stations;
+	ref Station[1] station1;
+	ref Station[1] station2;
 }
+
