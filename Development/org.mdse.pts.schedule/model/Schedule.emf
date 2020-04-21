@@ -1,3 +1,4 @@
+@"http://www.eclipse.org/OCL/Import"(depot="platform:/resource/org.mdse.pts.depot/model/Depot.ecore#/", ecore="http://www.eclipse.org/emf/2002/Ecore", network_0="platform:/resource/org.mdse.pts.network/model/Network.ecore#/")
 @namespace(uri="http://mdse.org/pts/schedule", prefix="schedule")
 package schedule;
 
@@ -20,31 +21,12 @@ class Route {
 	val Stop[*] stop;
 }
 
-abstract class Stop {
-}
-
-class ViaStop extends Stop {
-	ref network.Leg[1] Leg;
-}
-
-class StationStop extends Stop {
+class Stop {
 	ref network.Station[1] Station;
 	attr int[1] Platform;
 	attr int[1] Duration;
 	attr boolean[1] ShouldTurnAround;
-}
-
-abstract class Frequency {
-}
-
-class SingleDayFrequency extends Frequency {
-	val DepartureTime[+] departuretimes;
-	val DepartureDay[1] departureday;
-}
-
-class MultipleDaysFrequency extends Frequency {
-	val DepartureTime[1] departuretime;
-	val DepartureDay[1..7] departuredays;
+	ref network.Leg via;
 }
 
 class DepartureTime {
@@ -52,8 +34,9 @@ class DepartureTime {
 	attr int[1] minutes;
 }
 
-class DepartureDay {
-	attr WeekDay[1] weekday;
+class Frequency {
+	ref DepartureDay[+] day;
+	ref DepartureTime[+] time;
 }
 
 enum WeekDay {
@@ -65,3 +48,8 @@ enum WeekDay {
 	SATURDAY = 5;
 	SUNDAY = 6;
 }
+
+class DepartureDay {
+	attr WeekDay[1] weekday;
+}
+

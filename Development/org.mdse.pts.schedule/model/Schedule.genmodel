@@ -19,7 +19,8 @@
     <genClasses ecoreClass="../../org.mdse.pts.network/model/Network.ecore#//Leg">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.mdse.pts.network/model/Network.ecore#//Leg/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.mdse.pts.network/model/Network.ecore#//Leg/distance"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../../org.mdse.pts.network/model/Network.ecore#//Leg/stations"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../../org.mdse.pts.network/model/Network.ecore#//Leg/station1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../../org.mdse.pts.network/model/Network.ecore#//Leg/station2"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Depot" ecorePackage="../../org.mdse.pts.depot/model/Depot.ecore#/">
