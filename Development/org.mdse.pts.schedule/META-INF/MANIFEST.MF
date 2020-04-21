@@ -10,13 +10,7 @@ Automatic-Module-Name: org.mdse.pts.schedule
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.mdse.pts.schedule,
  org.mdse.pts.schedule.impl,
- org.mdse.pts.schedule.util,
- depot,
- depot.impl,
- depot.util,
- network,
- network.impl,
- network.util
+ org.mdse.pts.schedule.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.mdse.pts.common;visibility:=reexport,

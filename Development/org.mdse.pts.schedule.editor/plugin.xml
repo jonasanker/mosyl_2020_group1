@@ -12,12 +12,12 @@
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
-            id="network.presentation.NetworkModelWizardID"
-            name="%_UI_NetworkModelWizard_label"
-            class="network.presentation.NetworkModelWizard"
+            id="org.mdse.pts.schedule.presentation.ScheduleModelWizardID"
+            name="%_UI_ScheduleModelWizard_label"
+            class="org.mdse.pts.schedule.presentation.ScheduleModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/NetworkModelFile.gif">
-         <description>%_UI_NetworkModelWizard_description</description>
+            icon="icons/full/obj16/ScheduleModelFile.gif">
+         <description>%_UI_ScheduleModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
       </wizard>
    </extension>
@@ -25,41 +25,12 @@
    <extension point="org.eclipse.ui.editors">
       <!-- @generated Schedule -->
       <editor
-            id="network.presentation.NetworkEditorID"
-            name="%_UI_NetworkEditor_label"
-            icon="icons/full/obj16/NetworkModelFile.gif"
-            extensions="network"
-            class="network.presentation.NetworkEditor"
-            contributorClass="network.presentation.NetworkActionBarContributor">
+            id="org.mdse.pts.schedule.presentation.ScheduleEditorID"
+            name="%_UI_ScheduleEditor_label"
+            icon="icons/full/obj16/ScheduleModelFile.gif"
+            extensions="schedule"
+            class="org.mdse.pts.schedule.presentation.ScheduleEditor"
+            contributorClass="org.mdse.pts.schedule.presentation.ScheduleActionBarContributor">
       </editor>
    </extension>
-
-   <extension point="org.eclipse.ui.newWizards">
-      <!-- @generated Schedule -->
-      <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
-            name="%_UI_Wizard_category"/>
-      <wizard
-            id="depot.presentation.DepotModelWizardID"
-            name="%_UI_DepotModelWizard_label"
-            class="depot.presentation.DepotModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/DepotModelFile.gif">
-         <description>%_UI_DepotModelWizard_description</description>
-         <selection class="org.eclipse.core.resources.IResource"/>
-      </wizard>
-   </extension>
-
-   <extension point="org.eclipse.ui.editors">
-      <!-- @generated Schedule -->
-      <editor
-            id="depot.presentation.DepotEditorID"
-            name="%_UI_DepotEditor_label"
-            icon="icons/full/obj16/DepotModelFile.gif"
-            extensions="depot"
-            class="depot.presentation.DepotEditor"
-            contributorClass="depot.presentation.DepotActionBarContributor">
-      </editor>
-   </extension>
-
 </plugin>
