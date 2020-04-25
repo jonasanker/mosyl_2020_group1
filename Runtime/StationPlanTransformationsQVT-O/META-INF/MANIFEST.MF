@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.mdse.gt.stationplan.transformations
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: %providerName
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.m2m.qvt.oml
+Bundle-ActivationPolicy: lazy
