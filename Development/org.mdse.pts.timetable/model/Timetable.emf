@@ -1,11 +1,34 @@
 @namespace(uri="http://mdse.org/pts/timetable", prefix="timetable")
 package timetable;
 
-import "platform:/resource/org.mdse.pts.network/model/Network.ecore";
-import "platform:/resource/org.mdse.pts.depot/model/Depot.ecore";
-
 class Timetable {
-	
+	attr String[1] station;
+	ref Arrival[*] arrivals;
+	ref Departure[*] departures;
 }
 
-//TODO: Define metamodel
+abstract class Entry {
+	attr WeekDay[1] weekDay;
+	attr EDate[1] time;
+	attr String[1] platform;
+	attr String[1] train;
+}
+
+class Arrival extends Entry {
+	attr String previousStation;
+}
+
+class Departure extends Entry {
+	attr String nextStation;
+}
+
+enum WeekDay {
+	MONDAY = 0;
+	TUESDAY = 1;
+	WEDNESDAY = 2;
+	THURSDAY = 3;
+	FRIDAY = 4;
+	SATURDAY = 5;
+	SUNDAY = 6;
+}
+
