@@ -10,8 +10,7 @@
       <!-- @generated Network -->
       <package
             uri="http://mdse.org/pts/network"
-            class="org.mdse.pts.network.NetworkPackage"
-            genModel="model/Network.genmodel"/>
+            class="org.mdse.pts.network.NetworkPackage"/>
    </extension>
 
 </plugin>
