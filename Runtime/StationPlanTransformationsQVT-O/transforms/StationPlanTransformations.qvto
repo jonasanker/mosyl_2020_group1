@@ -1,0 +1,22 @@
+
+modeltype StationPlan uses "http://mdse.org/gt/stationplan";
+modeltype Network uses "http://mdse.org/pts/network";
+
+transformation StationPlanTransformations(in source: StationPlan, out target: Network);
+
+main() {
+	source.rootObjects()[StationPlan]->map
+		StationPlan2Network();
+}
+
+mapping StationPlan::StationPlan::StationPlan2Network() : Network::Network {
+	stations := self.trainStations->TrainStation2Station();
+}
+
+mapping StationPlan::TrainStation::TrainStation2Station() : Network::Station {
+	
+}
+
+mapping StationPlan::Connection::Connection2Leg() : Network::Leg {
+	
+}
