@@ -1,0 +1,28 @@
+
+modeltype MMStationPlan uses "http://mdse.org/gt/stationplan";
+modeltype MMNetwork uses "http://mdse.org/pts/network";
+
+transformation StationPlanTransformations(in source: MMStationPlan, out target: MMNetwork);
+
+main() {
+	source.rootObjects()[StationPlan].map StationPlan2Network();
+}
+
+mapping StationPlan::StationPlan2Network() : Network {
+	stations := self.trainStations->TrainStation2Station();
+	legs := source.objectsOfType(Connection)->Connection2Leg();
+}
+
+mapping TrainStation::TrainStation2Station() : Station {
+	legs += self.incomingConnections->Connection2Leg();
+	legs += self.outgoingConnections->Connection2Leg();
+	name := self.identifier;
+	
+}
+
+mapping Connection::Connection2Leg() : Leg {
+	name := self.identifier;
+	distance := self.distanceInMeters;
+	station1 := self.sourceStation.map TrainStation2Station();
+	station2 := self.targetStation.map TrainStation2Station();
+}

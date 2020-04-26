@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stationplan:StationPlan xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:stationplan="http://mdse.org/gt/stationplan">
+  <trainStations identifier="Østerport">
+    <outgoingConnections identifier="Østerport-Nørreport" distanceInMeters="2000" targetStation="//@trainStations.1"/>
+    <outgoingConnections identifier="Østerport-KBHH" distanceInMeters="4500" targetStation="//@trainStations.3"/>
+  </trainStations>
+  <trainStations identifier="Nørreport" incomingConnections="//@trainStations.0/@outgoingConnections.0">
+    <outgoingConnections identifier="Nørreport-Vesterport" distanceInMeters="1500" targetStation="//@trainStations.2"/>
+  </trainStations>
+  <trainStations identifier="Vesterport" incomingConnections="//@trainStations.1/@outgoingConnections.0">
+    <outgoingConnections identifier="Vesterport-KBHH" distanceInMeters="1000" targetStation="//@trainStations.3"/>
+  </trainStations>
+  <trainStations identifier="Københavns Hovedbanegård" incomingConnections="//@trainStations.2/@outgoingConnections.0 //@trainStations.0/@outgoingConnections.1"/>
+</stationplan:StationPlan>
