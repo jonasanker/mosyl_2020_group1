@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <network:Network xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:network="http://mdse.org/pts/network" name="My">
-  <stations name="1" legs="//@legs.0 //@legs.1"/>
-  <stations name="2" legs="//@legs.1 //@legs.0"/>
-  <legs name="l1" distance="10" station1="//@stations.0" station2="//@stations.1"/>
-  <legs name="l2" distance="10" station1="//@stations.0" station2="//@stations.1"/>
+  <stations name="Rocksteady"/>
+  <stations name="Bebop"/>
+  <stations name="Shredder" legs="//@legs.0 //@legs.1"/>
+  <legs name="legX" distance="10" station1="//@stations.2" station2="//@stations.1"/>
+  <legs name="legY" distance="12" station1="//@stations.2" station2="//@stations.0"/>
 </network:Network>
