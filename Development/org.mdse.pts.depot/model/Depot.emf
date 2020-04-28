@@ -1,41 +1,70 @@
+@"http://www.eclipse.org/OCL/Import"(ecore="http://www.eclipse.org/emf/2002/Ecore")
+@Ecore(invocationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", settingDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", validationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot")
 @namespace(uri="http://mdse.org/pts/depot", prefix="depot")
 package depot;
 
+@Ecore(constraints="trainsHaveUniqueNameInDepot")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(trainsHaveUniqueNameInDepot="
+			trains -> forAll(t | t -> isUnique(name))")
 class Depot {
-	unique ref Train[*] trains;
+  ref Train[*] trains;
 }
 
+@Ecore(constraints="innerCoachesMustHaveUniqueId intercityTrainMustHaveLocomotiveAtFrontOrBack")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(innerCoachesMustHaveUniqueId="Tuple {
+	message : String = name + 'A trains inner coaches must have a unique id',
+	status : Boolean = 
+			coaches -> forAll(c | c -> oclIsTypeOf(Locomotive) 
+				or self.oclAsType(CoachWithId)->isUnique(identifier)
+			)
+}.status", intercityTrainMustHaveLocomotiveAtFrontOrBack="Tuple {
+	message : String = name + 'Train must have a locomotive at the back and/or front',
+	status : Boolean = 
+			coaches -> first().oclIsKindOf(Locomotive) 
+				or coaches -> last().oclIsKindOf(Locomotive)
+}.status")
 abstract class Train {
-	attr EString name;
+  attr String[1] name;
+  ref Coach[+] coaches;
 }
 
+@Ecore(constraints="intercityTrainMustHaveDiningCoach intercityTrainMustHaveFirstClassCoach")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(intercityTrainMustHaveDiningCoach="Tuple {
+	message : String = name + 'Intercity train must have a dining coach',
+	status : Boolean = 
+			coaches -> exists(c | c -> oclIsTypeOf(DiningCoach))
+}.status", intercityTrainMustHaveFirstClassCoach="Tuple {
+	message : String = name + 'Intercity train must have at least 1 first class coach',
+	status : Boolean = 
+			coaches -> exists(self.oclIsTypeOf(FirstClassPassengerCoach))
+}.status")
 class IntercityTrain extends Train {
-	unique ref Coach[2..*] coaches;
 }
 
 class RegionalTrain extends Train {
-	unique ref Coach[1..*] coaches;
 }
 
 enum PassengerClass {
-	FirstClass = 1;
-	SecondClass = 2;
+  FirstClass = 1;
+  SecondClass = 2;
 }
 
-abstract class Coach {}
+abstract class Coach {
+}
 
-class Locomotive extends Coach {}
+class Locomotive extends Coach {
+}
 
 abstract class CoachWithId extends Coach {
-	attr EInt identifier;
+  attr int[1] identifier;
 }
 
-class PassengerCoach extends CoachWithId {
-	attr PassengerClass passengerClass;
+class FirstClassPassengerCoach extends CoachWithId {
+}
+
+class SecondClassPassengerCoash extends CoachWithId {
 }
 
 class DiningCoach extends CoachWithId {
-	
 }
 
-//TODO: Define metamodel
