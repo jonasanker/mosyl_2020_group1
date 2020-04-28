@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" name="Network" version="12.0.0.2017041100">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="Network" version="12.0.0.2017041100">
   <ownedViewpoints name="Network Viewpoint" modelFileExtension="network">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Network Diagram Description" domainClass="network.Network" enablePopupBars="true">
-      <defaultLayer name="Default"/>
+      <defaultLayer name="Network">
+        <nodeMappings name="Station" label="Station" domainClass="network.Station">
+          <style xsi:type="style:WorkspaceImageDescription" labelSize="14" showIcon="false" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.mdse.pts.network.dsl/icons/train_red_32x32.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="Leg" sourceMapping="//@ownedViewpoints[name='Network%20Viewpoint']/@ownedRepresentations[name='Network%20Diagram%20Description']/@defaultLayer/@nodeMappings[name='Station']" targetMapping="//@ownedViewpoints[name='Network%20Viewpoint']/@ownedRepresentations[name='Network%20Diagram%20Description']/@defaultLayer/@nodeMappings[name='Station']" targetFinderExpression="feature:station2" sourceFinderExpression="feature:station1" domainClass="network::Leg" useDomainElement="true">
+          <style lineStyle="dash" targetArrow="NoDecoration" sizeComputationExpression="3">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="[self.name + '\n' + self.distance+ 'km'/]" iconPath="/org.mdse.pts.network.dsl/icons/rail_straight_16x16.png">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+      </defaultLayer>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.mdse.pts.network.dsl.Services"/>
   </ownedViewpoints>
