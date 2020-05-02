@@ -35,28 +35,14 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="via" eType="ecore:EClass ../../org.mdse.pts.network/model/Network.ecore#//Leg"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DepartureTime">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hour" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minutes" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Frequency">
     <eStructuralFeatures xsi:type="ecore:EReference" name="day" lowerBound="1" upperBound="-1"
         eType="#//DepartureDay"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="time" lowerBound="1" upperBound="-1"
-        eType="#//DepartureTime"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="WeekDay">
-    <eLiterals name="MONDAY"/>
-    <eLiterals name="TUESDAY" value="1"/>
-    <eLiterals name="WEDNESDAY" value="2"/>
-    <eLiterals name="THURSDAY" value="3"/>
-    <eLiterals name="FRIDAY" value="4"/>
-    <eLiterals name="SATURDAY" value="5"/>
-    <eLiterals name="SUNDAY" value="6"/>
+        eType="ecore:EClass ../../org.mdse.pts.common/model/Common.ecore#//Time"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DepartureDay">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="weekday" lowerBound="1"
-        eType="#//WeekDay"/>
+        eType="ecore:EEnum ../../org.mdse.pts.common/model/Common.ecore#//WeekDay"/>
   </eClassifiers>
 </ecore:EPackage>

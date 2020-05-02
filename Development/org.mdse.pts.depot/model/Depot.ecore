@@ -1,21 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="depot" nsURI="http://mdse.org/pts/depot" nsPrefix="depot">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="Depot">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="trainsHaveUniqueNameInDepot"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="trainsHaveUniqueNameInDepot" value="&#xA;&#x9;&#x9;&#x9;trains -> forAll(t | t -> isUnique(name))"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="trains" upperBound="-1"
         eType="#//Train"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Train" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IntercityTrain" eSuperTypes="#//Train">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="coaches" lowerBound="2"
-        upperBound="-1" eType="#//Coach"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RegionalTrain" eSuperTypes="#//Train">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="innerCoachesMustHaveUniqueId intercityTrainMustHaveLocomotiveAtFrontOrBack"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="innerCoachesMustHaveUniqueId" value="Tuple {&#xA;&#x9;message : String = name + 'A trains inner coaches must have a unique id',&#xA;&#x9;status : Boolean = &#xA;&#x9;&#x9;&#x9;coaches -> forAll(c | c -> oclIsTypeOf(Locomotive) &#xA;&#x9;&#x9;&#x9;&#x9;or self.oclAsType(CoachWithId)->isUnique(identifier)&#xA;&#x9;&#x9;&#x9;)&#xA;}.status"/>
+      <details key="intercityTrainMustHaveLocomotiveAtFrontOrBack" value="Tuple {&#xA;&#x9;message : String = name + 'Train must have a locomotive at the back and/or front',&#xA;&#x9;status : Boolean = &#xA;&#x9;&#x9;&#x9;coaches -> first().oclIsKindOf(Locomotive) &#xA;&#x9;&#x9;&#x9;&#x9;or coaches -> last().oclIsKindOf(Locomotive)&#xA;}.status"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="coaches" lowerBound="1"
         upperBound="-1" eType="#//Coach"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntercityTrain" eSuperTypes="#//Train">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="intercityTrainMustHaveDiningCoach intercityTrainMustHaveFirstClassCoach"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="intercityTrainMustHaveDiningCoach" value="Tuple {&#xA;&#x9;message : String = name + 'Intercity train must have a dining coach',&#xA;&#x9;status : Boolean = &#xA;&#x9;&#x9;&#x9;coaches -> exists(c | c -> oclIsTypeOf(DiningCoach))&#xA;}.status"/>
+      <details key="intercityTrainMustHaveFirstClassCoach" value="Tuple {&#xA;&#x9;message : String = name + 'Intercity train must have at least 1 first class coach',&#xA;&#x9;status : Boolean = &#xA;&#x9;&#x9;&#x9;coaches -> exists(self.oclIsTypeOf(FirstClassPassengerCoach))&#xA;}.status"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RegionalTrain" eSuperTypes="#//Train"/>
   <eClassifiers xsi:type="ecore:EEnum" name="PassengerClass">
     <eLiterals name="FirstClass" value="1"/>
     <eLiterals name="SecondClass" value="2"/>
@@ -23,10 +48,10 @@
   <eClassifiers xsi:type="ecore:EClass" name="Coach" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="Locomotive" eSuperTypes="#//Coach"/>
   <eClassifiers xsi:type="ecore:EClass" name="CoachWithId" abstract="true" eSuperTypes="#//Coach">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PassengerCoach" eSuperTypes="#//CoachWithId">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengerClass" eType="#//PassengerClass"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FirstClassPassengerCoach" eSuperTypes="#//CoachWithId"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SecondClassPassengerCoash" eSuperTypes="#//CoachWithId"/>
   <eClassifiers xsi:type="ecore:EClass" name="DiningCoach" eSuperTypes="#//CoachWithId"/>
 </ecore:EPackage>
