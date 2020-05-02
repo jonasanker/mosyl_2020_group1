@@ -2,6 +2,8 @@ package org.mdse.pts.common.util;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -12,10 +14,13 @@ import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 
 public class EclipseUtil {
 	public static IProject resolveProjectFromResource(Resource resource) {
@@ -163,5 +168,49 @@ public class EclipseUtil {
 		} catch(CoreException e) {
 			
 		}
+	}
+	
+	public static IFile getFirstIFileFromSelectionWithExtension(String requestedFileExtension, ISelection selection) {
+		List<IResource> resources = extractResourcesFromSelection(selection);
+		
+		for (IResource resource : resources) {
+			if (resource instanceof IFile) {
+				IFile file = (IFile) resource;
+				
+				String fileExtension = file.getFileExtension();
+				if (fileExtension.equalsIgnoreCase(requestedFileExtension)) {
+					return file;
+				}
+			}
+		}
+		
+		return null;
+	}
+	
+	private static List<IResource> extractResourcesFromSelection(ISelection selection) {
+		List<IResource> selectedResources = new ArrayList<IResource>();
+		
+		if (selection instanceof StructuredSelection) {
+			StructuredSelection structuredSelection = (StructuredSelection) selection;
+
+			List<?> selectedObjects = structuredSelection.toList();
+
+			for (Object selectedObject : selectedObjects) {
+				if (selectedObject instanceof IResource) {
+					IResource resource = (IResource) selectedObject;
+					selectedResources.add(resource);
+				} else if (selectedObject instanceof IAdaptable) {
+					IAdaptable adaptable = (IAdaptable) selectedObject;
+					Object adapter = adaptable.getAdapter(IResource.class);
+
+					if (adapter != null) {
+						IResource resource = (IResource) adapter;
+						selectedResources.add(resource);
+					}
+				}
+			}
+		}
+		
+		return selectedResources;
 	}
 }
