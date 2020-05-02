@@ -11,8 +11,8 @@ class Timetable {
 
 abstract class Entry {
 	attr common.WeekDay[1] weekDay;
-	attr EDate[1] time;
-	attr String[1] platform;
+	ref common.Time[1] time;
+	attr EInt[1] platform;
 	attr String[1] train;
 }
 

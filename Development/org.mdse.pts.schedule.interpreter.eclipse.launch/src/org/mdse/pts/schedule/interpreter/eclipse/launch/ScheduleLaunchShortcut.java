@@ -16,7 +16,6 @@ import org.mdse.pts.common.util.EclipseUtil;
 import org.mdse.pts.common.util.EcoreIOUtil;
 import org.mdse.pts.schedule.Schedule;
 import org.mdse.pts.schedule.interpreter.ScheduleInterpreter;
-import org.mdse.pts.schedule.interpreter.ResultData;
 import org.mdse.pts.schedule.interpreter.ScheduleInterpreterException;;
 
 public class ScheduleLaunchShortcut implements ILaunchShortcut {
@@ -67,7 +66,7 @@ public class ScheduleLaunchShortcut implements ILaunchShortcut {
 	protected void interpretSchedule(Schedule schedule) {
 		try {
 			ScheduleInterpreter interpreter = new ScheduleInterpreter();
-			ResultData resultData = interpreter.interpret(schedule);
+			//interpreter.interpret(schedule);
 			System.out.println("##############################TESTING");
 			//WRITE TO FILE
 		} catch (ScheduleInterpreterException e) {

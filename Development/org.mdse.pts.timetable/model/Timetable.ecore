@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="timetable" nsURI="http://mdse.org/pts/timetable" nsPrefix="timetable">
-  <eAnnotations source="http://www.eclipse.org/OCL/Import">
-    <details key="common" value="platform:/resource/org.mdse.pts.common/model/Common.ecore#/"/>
-    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
-  </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="Timetable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="station" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -16,15 +12,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="Entry" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="weekDay" lowerBound="1"
         eType="ecore:EEnum ../../org.mdse.pts.common/model/Common.ecore#//WeekDay"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="time" lowerBound="1" eType="ecore:EClass ../../org.mdse.pts.common/model/Common.ecore#//Time"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="platform" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="train" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Arrival" eSuperTypes="#//Entry">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="constraints for previousStation and nextStation cannot be modeled with OCL, as we don't know timetables for the other stations"/>
-    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="previousStation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Departure" eSuperTypes="#//Entry">
