@@ -9,15 +9,6 @@
   <foreignModel>Schedule.ecore</foreignModel>
   <genPackages prefix="Schedule" basePackage="org.mdse.pts" disposableProviderFactory="true"
       ecorePackage="Schedule.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Schedule.ecore#//WeekDay">
-      <genEnumLiterals ecoreEnumLiteral="Schedule.ecore#//WeekDay/MONDAY"/>
-      <genEnumLiterals ecoreEnumLiteral="Schedule.ecore#//WeekDay/TUESDAY"/>
-      <genEnumLiterals ecoreEnumLiteral="Schedule.ecore#//WeekDay/WEDNESDAY"/>
-      <genEnumLiterals ecoreEnumLiteral="Schedule.ecore#//WeekDay/THURSDAY"/>
-      <genEnumLiterals ecoreEnumLiteral="Schedule.ecore#//WeekDay/FRIDAY"/>
-      <genEnumLiterals ecoreEnumLiteral="Schedule.ecore#//WeekDay/SATURDAY"/>
-      <genEnumLiterals ecoreEnumLiteral="Schedule.ecore#//WeekDay/SUNDAY"/>
-    </genEnums>
     <genClasses ecoreClass="Schedule.ecore#//Schedule">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Schedule.ecore#//Schedule/trainschedules"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Schedule.ecore#//Schedule/network"/>

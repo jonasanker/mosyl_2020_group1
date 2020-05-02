@@ -1,0 +1,22 @@
+@"http://www.eclipse.org/OCL/Import"(ecore="http://www.eclipse.org/emf/2002/Ecore")
+@Ecore(invocationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", settingDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", validationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot")
+@namespace(uri="http://mdse.org/pts/common", prefix="common")
+package common;
+
+enum WeekDay {
+	MONDAY = 0;
+	TUESDAY = 1;
+	WEDNESDAY = 2;
+	THURSDAY = 3;
+	FRIDAY = 4;
+	SATURDAY = 5;
+	SUNDAY = 6;
+}
+
+@Ecore(constraints="max60Minutes max24Hours")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(max60Minutes="minutes < 60", max24Hours="hours < 24")
+class Time {
+	attr int[1] minutes;
+	attr int[1] hours;
+}
+

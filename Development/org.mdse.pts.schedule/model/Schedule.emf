@@ -2,8 +2,9 @@
 @namespace(uri="http://mdse.org/pts/schedule", prefix="schedule")
 package schedule;
 
-import "platform:/resource/org.mdse.pts.depot/model/Depot.ecore";
 import "platform:/resource/org.mdse.pts.network/model/Network.ecore";
+import "platform:/resource/org.mdse.pts.depot/model/Depot.ecore";
+import "platform:/resource/org.mdse.pts.common/model/Common.ecore";
 
 class Schedule {
 	val TrainSchedule[*] trainschedules;
@@ -29,27 +30,12 @@ class Stop {
 	ref network.Leg via;
 }
 
-class DepartureTime {
-	attr int[1] hour;
-	attr int[1] minutes;
-}
-
 class Frequency {
 	ref DepartureDay[+] day;
-	ref DepartureTime[+] time;
-}
-
-enum WeekDay {
-	MONDAY = 0;
-	TUESDAY = 1;
-	WEDNESDAY = 2;
-	THURSDAY = 3;
-	FRIDAY = 4;
-	SATURDAY = 5;
-	SUNDAY = 6;
+	ref common.Time[+] time;
 }
 
 class DepartureDay {
-	attr WeekDay[1] weekday;
+	attr common.WeekDay[1] weekday;
 }
 
