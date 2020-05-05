@@ -1,7 +1,6 @@
 package org.mdse.pts.depot.validation;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -10,13 +9,20 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.util.EObjectValidator;
-
+import org.eclipse.ui.IStartup;
 import org.mdse.pts.depot.*;
 
-public class DepotValidator extends EObjectValidator {
+public class DepotValidator extends EObjectValidator implements IStartup {
 	private DiagnosticChain diagnostics;
 	private boolean modelIsValid;
+	
+	@Override
+	public void earlyStartup() {
+		// TODO Auto-generated method stub
+		EValidator.Registry.INSTANCE.put(DepotPackage.eINSTANCE, new DepotValidator());
+	}
 	
 	@Override
 	public boolean validate(EObject eObject, DiagnosticChain diagnostics, Map<Object, Object> context) {
