@@ -25,7 +25,8 @@ class Depot {
 }.status")
 abstract class Train {
   attr String[1] name;
-  ref Coach[+] coaches;
+  ref Coach[+]#train coaches;
+  ref Depot[1] trains;
 }
 
 @Ecore(constraints="intercityTrainMustHaveDiningCoach intercityTrainMustHaveFirstClassCoach")
@@ -50,6 +51,7 @@ enum PassengerClass {
 }
 
 abstract class Coach {
+  ref Train[1]#coaches train;
 }
 
 class Locomotive extends Coach {
@@ -62,7 +64,7 @@ abstract class CoachWithId extends Coach {
 class FirstClassPassengerCoach extends CoachWithId {
 }
 
-class SecondClassPassengerCoash extends CoachWithId {
+class SecondClassPassengerCoach extends CoachWithId {
 }
 
 class DiningCoach extends CoachWithId {

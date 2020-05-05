@@ -29,7 +29,9 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="coaches" lowerBound="1"
-        upperBound="-1" eType="#//Coach"/>
+        upperBound="-1" eType="#//Coach" eOpposite="#//Coach/train"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trains" lowerBound="1"
+        eType="#//Depot"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IntercityTrain" eSuperTypes="#//Train">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -45,13 +47,16 @@
     <eLiterals name="FirstClass" value="1"/>
     <eLiterals name="SecondClass" value="2"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Coach" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Coach" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="train" lowerBound="1" eType="#//Train"
+        eOpposite="#//Train/coaches"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Locomotive" eSuperTypes="#//Coach"/>
   <eClassifiers xsi:type="ecore:EClass" name="CoachWithId" abstract="true" eSuperTypes="#//Coach">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FirstClassPassengerCoach" eSuperTypes="#//CoachWithId"/>
-  <eClassifiers xsi:type="ecore:EClass" name="SecondClassPassengerCoash" eSuperTypes="#//CoachWithId"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SecondClassPassengerCoach" eSuperTypes="#//CoachWithId"/>
   <eClassifiers xsi:type="ecore:EClass" name="DiningCoach" eSuperTypes="#//CoachWithId"/>
 </ecore:EPackage>
