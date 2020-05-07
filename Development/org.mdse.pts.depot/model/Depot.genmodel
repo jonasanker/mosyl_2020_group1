@@ -3,28 +3,21 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.mdse.pts.depot/src-gen" editDirectory="/org.mdse.pts.depot.edit/src-gen"
     editorDirectory="/org.mdse.pts.depot.editor/src-gen" modelPluginID="org.mdse.pts.depot"
     modelName="Depot" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
-    testsDirectory="/org.mdse.pts.depot.tests/src-gen" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
   <foreignModel>Depot.ecore</foreignModel>
   <genPackages prefix="Depot" basePackage="org.mdse.pts" disposableProviderFactory="true"
       ecorePackage="Depot.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Depot.ecore#//PassengerClass">
-      <genEnumLiterals ecoreEnumLiteral="Depot.ecore#//PassengerClass/FirstClass"/>
-      <genEnumLiterals ecoreEnumLiteral="Depot.ecore#//PassengerClass/SecondClass"/>
-    </genEnums>
     <genClasses ecoreClass="Depot.ecore#//Depot">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Depot.ecore#//Depot/trains"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Depot.ecore#//Depot/trains"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Depot.ecore#//Train">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Depot.ecore#//Train/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Depot.ecore#//Train/coaches"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Depot.ecore#//Train/trains"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Depot.ecore#//Train/coaches"/>
     </genClasses>
     <genClasses ecoreClass="Depot.ecore#//IntercityTrain"/>
     <genClasses ecoreClass="Depot.ecore#//RegionalTrain"/>
-    <genClasses image="false" ecoreClass="Depot.ecore#//Coach">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Depot.ecore#//Coach/train"/>
-    </genClasses>
+    <genClasses image="false" ecoreClass="Depot.ecore#//Coach"/>
     <genClasses ecoreClass="Depot.ecore#//Locomotive"/>
     <genClasses image="false" ecoreClass="Depot.ecore#//CoachWithId">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Depot.ecore#//CoachWithId/identifier"/>
