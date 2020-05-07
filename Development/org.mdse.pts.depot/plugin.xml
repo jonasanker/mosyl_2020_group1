@@ -13,5 +13,4 @@
             class="org.mdse.pts.depot.DepotPackage"
             genModel="model/Depot.genmodel"/>
    </extension>
-
 </plugin>

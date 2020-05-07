@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<depot:Depot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:depot="http://mdse.org/pts/depot">
+  <trains xsi:type="depot:IntercityTrain" name="VALID_IC_LFD_Minimum">
+    <coaches xsi:type="depot:Locomotive"/>
+    <coaches xsi:type="depot:FirstClassPassengerCoach"/>
+    <coaches xsi:type="depot:DiningCoach" identifier="1"/>
+  </trains>
+  <trains xsi:type="depot:IntercityTrain" name="VALID_IC_LL_2Locomotives">
+    <coaches xsi:type="depot:Locomotive"/>
+    <coaches xsi:type="depot:FirstClassPassengerCoach"/>
+    <coaches xsi:type="depot:DiningCoach" identifier="1"/>
+    <coaches xsi:type="depot:Locomotive"/>
+  </trains>
+  <trains xsi:type="depot:IntercityTrain" name="VALID_IC_LFDS">
+    <coaches xsi:type="depot:Locomotive"/>
+    <coaches xsi:type="depot:FirstClassPassengerCoach"/>
+    <coaches xsi:type="depot:DiningCoach" identifier="1"/>
+    <coaches xsi:type="depot:SecondClassPassengerCoach" identifier="2"/>
+  </trains>
+  <trains xsi:type="depot:RegionalTrain" name="VALID_RE_Minimum">
+    <coaches xsi:type="depot:Locomotive"/>
+  </trains>
+  <trains xsi:type="depot:IntercityTrain" name="INVALID_IC_2_Dining">
+    <coaches xsi:type="depot:Locomotive"/>
+    <coaches xsi:type="depot:FirstClassPassengerCoach" identifier="1"/>
+    <coaches xsi:type="depot:DiningCoach" identifier="2"/>
+    <coaches xsi:type="depot:DiningCoach" identifier="3"/>
+    <coaches xsi:type="depot:SecondClassPassengerCoach" identifier="4"/>
+  </trains>
+  <trains xsi:type="depot:IntercityTrain" name="INVALID_IC_MisplacedDining">
+    <coaches xsi:type="depot:Locomotive"/>
+    <coaches xsi:type="depot:FirstClassPassengerCoach" identifier="1"/>
+    <coaches xsi:type="depot:SecondClassPassengerCoach" identifier="2"/>
+    <coaches xsi:type="depot:DiningCoach" identifier="3"/>
+  </trains>
+  <trains xsi:type="depot:IntercityTrain" name="INVALID_IC_ClassesInSequence">
+    <coaches xsi:type="depot:Locomotive"/>
+    <coaches xsi:type="depot:FirstClassPassengerCoach" identifier="1"/>
+    <coaches xsi:type="depot:DiningCoach" identifier="2"/>
+    <coaches xsi:type="depot:SecondClassPassengerCoach" identifier="3"/>
+    <coaches xsi:type="depot:FirstClassPassengerCoach" identifier="4"/>
+  </trains>
+  <trains xsi:type="depot:IntercityTrain" name="INVALID_IC_LocomotivesAtEnds">
+    <coaches xsi:type="depot:Locomotive"/>
+    <coaches xsi:type="depot:FirstClassPassengerCoach" identifier="1"/>
+    <coaches xsi:type="depot:DiningCoach" identifier="2"/>
+    <coaches xsi:type="depot:Locomotive"/>
+    <coaches xsi:type="depot:FirstClassPassengerCoach" identifier="4"/>
+  </trains>
+  <trains xsi:type="depot:IntercityTrain" name="INVALID_IC_NoDining">
+    <coaches xsi:type="depot:Locomotive"/>
+    <coaches xsi:type="depot:FirstClassPassengerCoach"/>
+    <coaches xsi:type="depot:SecondClassPassengerCoach" identifier="1"/>
+  </trains>
+  <trains xsi:type="depot:IntercityTrain" name="INVALID_IC_No_FirstClass">
+    <coaches xsi:type="depot:Locomotive"/>
+    <coaches xsi:type="depot:SecondClassPassengerCoach"/>
+    <coaches xsi:type="depot:SecondClassPassengerCoach" identifier="1"/>
+    <coaches xsi:type="depot:SecondClassPassengerCoach" identifier="2"/>
+    <coaches xsi:type="depot:DiningCoach" identifier="3"/>
+    <coaches xsi:type="depot:Locomotive"/>
+  </trains>
+  <trains xsi:type="depot:IntercityTrain" name="INVALID_IC_Empty"/>
+</depot:Depot>
