@@ -17,16 +17,16 @@
     <genClasses ecoreClass="Schedule.ecore#//TrainSchedule">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Schedule.ecore#//TrainSchedule/train"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Schedule.ecore#//TrainSchedule/route"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Schedule.ecore#//TrainSchedule/frequency"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Schedule.ecore#//TrainSchedule/frequencies"/>
     </genClasses>
     <genClasses ecoreClass="Schedule.ecore#//Route">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Schedule.ecore#//Route/stop"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Schedule.ecore#//Route/stops"/>
     </genClasses>
     <genClasses ecoreClass="Schedule.ecore#//Stop">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Schedule.ecore#//Stop/Station"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Schedule.ecore#//Stop/Platform"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Schedule.ecore#//Stop/Duration"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Schedule.ecore#//Stop/ShouldTurnAround"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Schedule.ecore#//Stop/station"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Schedule.ecore#//Stop/platform"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Schedule.ecore#//Stop/duration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Schedule.ecore#//Stop/shouldTurnAround"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Schedule.ecore#//Stop/via"/>
     </genClasses>
     <genClasses ecoreClass="Schedule.ecore#//Frequency">

@@ -16,30 +16,31 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TrainSchedule">
     <eStructuralFeatures xsi:type="ecore:EReference" name="train" lowerBound="1" eType="ecore:EClass ../../org.mdse.pts.depot/model/Depot.ecore#//Train"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="route" lowerBound="1" eType="#//Route"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="frequency" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="route" lowerBound="1" eType="#//Route"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="frequencies" lowerBound="1"
         upperBound="-1" eType="#//Frequency" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Route">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="stop" upperBound="-1" eType="#//Stop"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stops" upperBound="-1"
+        eType="#//Stop" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Stop">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="Station" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="station" lowerBound="1"
         eType="ecore:EClass ../../org.mdse.pts.network/model/Network.ecore#//Station"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Platform" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="platform" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Duration" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ShouldTurnAround" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="shouldTurnAround" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="via" eType="ecore:EClass ../../org.mdse.pts.network/model/Network.ecore#//Leg"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Frequency">
     <eStructuralFeatures xsi:type="ecore:EReference" name="day" lowerBound="1" upperBound="-1"
-        eType="#//DepartureDay"/>
+        eType="#//DepartureDay" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="time" lowerBound="1" upperBound="-1"
-        eType="ecore:EClass ../../org.mdse.pts.common/model/Common.ecore#//Time"/>
+        eType="ecore:EClass ../../org.mdse.pts.common/model/Common.ecore#//Time" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DepartureDay">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="weekday" lowerBound="1"
