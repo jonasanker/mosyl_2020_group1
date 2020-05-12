@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<depot:Depot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:depot="http://mdse.org/pts/depot" name="Hillerod1">
+  <trains xsi:type="depot:RegionalTrain" name="Regio1225">
+    <coaches xsi:type="depot:Locomotive"/>
+    <coaches xsi:type="depot:SecondClassPassengerCoach" identifier="1"/>
+    <coaches xsi:type="depot:SecondClassPassengerCoach" identifier="2"/>
+    <coaches xsi:type="depot:SecondClassPassengerCoach" identifier="3"/>
+  </trains>
+  <trains xsi:type="depot:IntercityTrain" name="IC912">
+    <coaches xsi:type="depot:Locomotive"/>
+    <coaches xsi:type="depot:FirstClassPassengerCoach" identifier="1"/>
+    <coaches xsi:type="depot:FirstClassPassengerCoach" identifier="2"/>
+    <coaches xsi:type="depot:DiningCoach"/>
+    <coaches xsi:type="depot:SecondClassPassengerCoach" identifier="3"/>
+    <coaches xsi:type="depot:SecondClassPassengerCoach" identifier="4"/>
+    <coaches xsi:type="depot:Locomotive"/>
+  </trains>
+</depot:Depot>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<network:Network xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:network="http://mdse.org/pts/network" name="Nordbanen">
+  <stations name="Hillerod" legs="//@legs.0 //@legs.1"/>
+  <stations name="Vejby" legs="//@legs.0 //@legs.1 //@legs.2"/>
+  <stations name="Tisvildeleje" legs="//@legs.2"/>
+  <legs name="HillerodEast" distance="12" station1="//@stations.1" station2="//@stations.0"/>
+  <legs name="HillerodWest" distance="10" station1="//@stations.1" station2="//@stations.0"/>
+  <legs name="VejbyTisvildeleje" distance="20" station1="//@stations.2" station2="//@stations.1"/>
+</network:Network>
