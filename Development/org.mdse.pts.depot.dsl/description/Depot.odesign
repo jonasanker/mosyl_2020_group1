@@ -6,42 +6,56 @@
         <containerMappings name="TrainContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="depot::Train" childrenPresentation="HorizontalStack">
           <subContainerMappings name="CoachContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="depot::Coach">
             <conditionnalStyles predicateExpression="[self.oclIsTypeOf(Locomotive) and container.oclAsType(Train).coaches->indexOf(self) = 1/]">
-              <style xsi:type="style:WorkspaceImageDescription" labelSize="12" labelExpression="" tooltipExpression="feature:name" workspacePath="/org.mdse.pts.depot.dsl/symbols/LocomotiveLeading.png">
+              <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="" hideLabelByDefault="true" workspacePath="/org.mdse.pts.depot.dsl/symbols/LocomotiveLeading.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="[self.oclIsTypeOf(Locomotive) and container.oclAsType(Train).coaches->indexOf(self) &lt;> 1/]">
-              <style xsi:type="style:WorkspaceImageDescription" labelSize="12" labelExpression="" tooltipExpression="feature:name" workspacePath="/org.mdse.pts.depot.dsl/symbols/LocomotiveTrailing.png">
+              <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="" hideLabelByDefault="true" workspacePath="/org.mdse.pts.depot.dsl/symbols/LocomotiveTrailing.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="[self.oclIsTypeOf(DiningCoach)/]">
-              <style xsi:type="style:WorkspaceImageDescription" labelSize="12" labelExpression="" tooltipExpression="feature:name" workspacePath="/org.mdse.pts.depot.dsl/symbols/DiningCoach.png">
+              <style xsi:type="style:WorkspaceImageDescription" labelSize="10" showIcon="false" labelExpression="" hideLabelByDefault="true" workspacePath="/org.mdse.pts.depot.dsl/symbols/DiningCoach.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="[self.oclIsTypeOf(FirstClassPassengerCoach)/]">
-              <style xsi:type="style:WorkspaceImageDescription" labelSize="12" labelExpression="" tooltipExpression="feature:name" workspacePath="/org.mdse.pts.depot.dsl/symbols/PassengerCoachFirstClass.png">
+              <style xsi:type="style:WorkspaceImageDescription" labelSize="10" showIcon="false" labelExpression="[self.identifier/]" tooltipExpression="aql:self.identifier" workspacePath="/org.mdse.pts.depot.dsl/symbols/PassengerCoachFirstClass.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="[self.oclIsTypeOf(SecondClassPassengerCoach)/]">
-              <style xsi:type="style:WorkspaceImageDescription" labelSize="12" labelExpression="" tooltipExpression="feature:name" workspacePath="/org.mdse.pts.depot.dsl/symbols/PassengerCoachSecondClass.png">
+              <style xsi:type="style:WorkspaceImageDescription" labelSize="10" showIcon="false" labelExpression="[self.identifier/]" tooltipExpression="aql:self.identifier" workspacePath="/org.mdse.pts.depot.dsl/symbols/PassengerCoachSecondClass.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
           </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" tooltipExpression="feature:name">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
-          </style>
+          <conditionnalStyles predicateExpression="[self.oclIsTypeOf(RegionalTrain)/]">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false" labelAlignment="LEFT" tooltipExpression="feature:name">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="[self.oclIsTypeOf(IntercityTrain)/]">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false" labelAlignment="LEFT" tooltipExpression="feature:name">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
         </containerMappings>
       </defaultLayer>
     </ownedRepresentations>
