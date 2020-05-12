@@ -22,8 +22,7 @@ Frequency:
 ;
 
 Time returns common::Time:
-	hours=INT ":" minutes=INT
-	;
+	hours=INT ":" minutes=INT;
 
 DepartureDay:
 	weekday=WeekDay
@@ -44,19 +43,36 @@ Route:
 ;
 
 Stop:
-	StartStop | ViaStop | TerminateStop
+	StartStop | IntermediateStop | TerminateStop
 ;
 
 StartStop returns Stop:
 	"start" "at" station=[network::Station] "on" "platform" platform=INT
 ;
 
-ViaStop returns Stop:
-	"drive" "via" via=[network::Leg]
+IntermediateStop returns Stop:
+	IntermediateViaStop | IntermediateDirectStop
+;
+
+IntermediateViaStop returns Stop:
+	"drive" "via" via=[network::Leg] 
+	"stop" "at" station=[network::Station] "on" "platform" platform=INT "for" duration=INT
+;
+
+IntermediateDirectStop returns Stop:
 	"stop" "at" station=[network::Station] "on" "platform" platform=INT "for" duration=INT
 ;
 
 TerminateStop returns Stop:
+	TerminateViaStop | TerminateDirectStop
+;
+
+TerminateViaStop returns Stop:
+	"drive" "via" via=[network::Leg] 
+	"terminate" "at" station=[network::Station] "on" "platform" platform=INT
+;
+
+TerminateDirectStop returns Stop:
 	"terminate" "at" station=[network::Station] "on" "platform" platform=INT
 ;
 
