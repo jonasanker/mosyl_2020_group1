@@ -4,7 +4,7 @@
     <semanticResources>Depot.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_fCF3sH5rEeqIgMB-hO0ZwA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_xPoZsY7TEeq6h6Wy1S-kww" name="depot class diagram" repPath="#_xPmkgI7TEeq6h6Wy1S-kww" changeId="c1572eec-118f-40eb-add6-2a97d4c34d6e">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_xPoZsY7TEeq6h6Wy1S-kww" name="depot class diagram" repPath="#_xPmkgI7TEeq6h6Wy1S-kww" changeId="063b9b0d-589e-410d-be52-3e40a9adca76">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="Depot.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -54,6 +54,10 @@
         <children xmi:type="notation:Node" xmi:id="_xc9EAI7TEeq6h6Wy1S-kww" type="2003" element="_xcyr8I7TEeq6h6Wy1S-kww">
           <children xmi:type="notation:Node" xmi:id="_xc9EA47TEeq6h6Wy1S-kww" type="5007"/>
           <children xmi:type="notation:Node" xmi:id="_xc9EBI7TEeq6h6Wy1S-kww" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_FO4UwJQWEeqRdverSXmL9w" type="3010" element="_FOjkoJQWEeqRdverSXmL9w">
+              <styles xmi:type="notation:FontStyle" xmi:id="_FO4UwZQWEeqRdverSXmL9w" fontColor="2697711" fontName="Ubuntu" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_FO4UwpQWEeqRdverSXmL9w"/>
+            </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_xc9EBY7TEeq6h6Wy1S-kww"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_xc9EBo7TEeq6h6Wy1S-kww"/>
           </children>
@@ -299,10 +303,18 @@
     <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_xcyr8I7TEeq6h6Wy1S-kww" name="Depot" tooltipText="" outgoingEdges="_xc6AsI7TEeq6h6Wy1S-kww" width="12" height="10">
       <target xmi:type="ecore:EClass" href="Depot.ecore#//Depot"/>
       <semanticElements xmi:type="ecore:EClass" href="Depot.ecore#//Depot"/>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_xcyr8Y7TEeq6h6Wy1S-kww" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,252,216">
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_HUvOAZQWEeqRdverSXmL9w" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,252,216">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_FOjkoJQWEeqRdverSXmL9w" name="name : EString" tooltipText="">
+        <target xmi:type="ecore:EAttribute" href="Depot.ecore#//Depot/name"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="Depot.ecore#//Depot/name"/>
+        <ownedStyle xmi:type="diagram:BundledImage" uid="_HUyRUZQWEeqRdverSXmL9w" labelAlignment="LEFT" description="_xc4yk47TEeq6h6Wy1S-kww">
+          <labelFormat>bold</labelFormat>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
+      </ownedElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_xczTAI7TEeq6h6Wy1S-kww" name="Train" tooltipText="" outgoingEdges="_xc6nwI7TEeq6h6Wy1S-kww" incomingEdges="_xc6AsI7TEeq6h6Wy1S-kww _xc7O0I7TEeq6h6Wy1S-kww _xc7O147TEeq6h6Wy1S-kww" width="12" height="10">
       <target xmi:type="ecore:EClass" href="Depot.ecore#//Train"/>

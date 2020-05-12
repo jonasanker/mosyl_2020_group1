@@ -10,6 +10,7 @@
       ecorePackage="Depot.ecore#/">
     <genClasses ecoreClass="Depot.ecore#//Depot">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Depot.ecore#//Depot/trains"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Depot.ecore#//Depot/name"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Depot.ecore#//Train">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Depot.ecore#//Train/name"/>
