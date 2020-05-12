@@ -1,22 +1,70 @@
-grammar org.mdse.pts.schedule.dsl.Schedule hidden(WS, ML_COMMENT, SL_COMMENT)
+grammar org.mdse.pts.schedule.dsl.Schedule with org.eclipse.xtext.common.Terminals
 
-//import "http://mdse.org/pts/network" as network
-//import "http://mdse.org/pts/depot" as depot
+import "http://mdse.org/pts/network" as network
+import "http://mdse.org/pts/depot" as depot
 import "http://mdse.org/pts/schedule"
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 Schedule:
-	"schedule for" /* network */ "with" /* depots */
+	"schedule" "for" network=[network::Network] "with" depots+=[depot::Depot] ("," depots+=[depot::Depot])*
+	trainschedules+=TrainSchedule ("," trainschedules+=TrainSchedule)*
 ;
 
 TrainSchedule:
-	"train" /* train */
-	"on" /* weekday(s) */ "at" /* time */
-	"and" /* weekday(s) */ "at" /* time */
-		"start at" /* station */ "on platform" /* platform name */
-		"drive via" /* leg name */
-		"stop at" /* station */ "on platform" /* platform name */ "for" /* stop duration */
-		"terminate at" /* station */ "on platform" /* platform name */
+	"train" train=[depot::Train]
+	frequencies+=Frequency ("," frequencies+=Frequency)*
+	route=Route
+;
+
+Frequency returns Frequency:
+	MultiDaysSingleTimeFrequency | SingleDaysMultiTimeFrequency
+;
+
+MultiDaysSingleTimeFrequency returns Frequency:
+	"on" day+=DepartureDay ("," day+=DepartureDay)* "at" time+=DepartureTime
+;
+
+SingleDaysMultiTimeFrequency returns Frequency:
+	"on" day+=DepartureDay "at" time+=DepartureTime ("," time+=DepartureTime)*
+;
+
+Route:
+	stops+=Stop ("," stops+=Stop)*
+;
+
+Stop:
+	StartStop | ViaStop | TerminateStop
+;
+
+StartStop returns Stop:
+	"start" "at" station=[network::Station] "on" "platform" platform=INT
+;
+
+ViaStop returns Stop:
+	"drive" "via" via=[network::Leg]
+	"stop" "at" station=[network::Station] "on" "platform" platform=INT "for" duration=INT
+;
+
+TerminateStop returns Stop:
+	"terminate" "at" station=[network::Station] "on" "platform" platform=INT
+;
+
+DepartureTime returns DepartureTime:
+	hour=INT ":" minutes=INT
+	;
+
+DepartureDay:
+	weekday=WeekDay
+;
+
+enum WeekDay returns WeekDay:
+	MONDAY = 'MONDAY' | 
+	TUESDAY = 'TUESDAY' | 
+	WEDNESDAY = 'WEDNESDAY' | 
+	THURSDAY = 'THURSDAY' | 
+	FRIDAY = 'FRIDAY' | 
+	SATURDAY = 'SATURDAY' | 
+	SUNDAY = 'SUNDAY'
 ;
 
 terminal fragment LETTER:
@@ -27,26 +75,7 @@ terminal fragment DIGIT:
 	('0'..'9')
 ;
 
-terminal ID:
-	'^'?('_' | LETTER) ('_' | LETTER | DIGIT )*
-;
-
-terminal INT returns ecore::EInt:
-	DIGIT+
-;
-
+// Below could possibly removed, verify!
 terminal STRING:
 	'"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|'"') )* '"'
-;
-
-terminal ML_COMMENT:
-	'/*' -> '*/'
-;
-
-terminal SL_COMMENT:
-	'//' !('\n'|'\r')* ('\r'? '\n')?
-;
-
-terminal WS:
-	(' '|'\t'|'\r'|'\n')+
 ;
