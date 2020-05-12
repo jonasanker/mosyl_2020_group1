@@ -33,4 +33,32 @@
             contributorClass="org.mdse.pts.schedule.presentation.ScheduleActionBarContributor">
       </editor>
    </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated Schedule -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="common.presentation.CommonModelWizardID"
+            name="%_UI_CommonModelWizard_label"
+            class="common.presentation.CommonModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/CommonModelFile.gif">
+         <description>%_UI_CommonModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated Schedule -->
+      <editor
+            id="common.presentation.CommonEditorID"
+            name="%_UI_CommonEditor_label"
+            icon="icons/full/obj16/CommonModelFile.gif"
+            extensions="common"
+            class="common.presentation.CommonEditor"
+            contributorClass="common.presentation.CommonActionBarContributor">
+      </editor>
+   </extension>
 </plugin>
