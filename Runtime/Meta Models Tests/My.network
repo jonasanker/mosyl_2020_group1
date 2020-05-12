@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<network:Network xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:network="http://mdse.org/pts/network" name="DK Banen">
-  <stations name="Roskilde" legs="//@legs.1 //@legs.0"/>
-  <stations name="Svedstrup" legs="//@legs.1 //@legs.0"/>
-  <legs name="Route666" distance="12" stations="//@stations.0 //@stations.1"/>
-  <legs name="Route123" distance="33" stations="//@stations.0 //@stations.1"/>
-</network:Network>

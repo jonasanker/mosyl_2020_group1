@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<network:Network xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:network="http://mdse.org/pts/network" name="DK Jernbanen">
+  <stations name="Roskilde" legs="//@legs.0"/>
+  <stations name="Svebolle" legs="//@legs.1 //@legs.0"/>
+  <stations name="New Station" legs="//@legs.1"/>
+  <legs name="track1" distance="33" stations="//@stations.0 //@stations.1"/>
+  <legs name="track2" distance="123" stations="//@stations.2 //@stations.1"/>
+</network:Network>
