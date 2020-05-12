@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<depot:Depot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:depot="http://mdse.org/pts/depot" name="d1">
+  <trains xsi:type="depot:IntercityTrain" name="IC1">
+    <coaches xsi:type="depot:Locomotive"/>
+    <coaches xsi:type="depot:FirstClassPassengerCoach"/>
+    <coaches xsi:type="depot:DiningCoach" identifier="1"/>
+    <coaches xsi:type="depot:Locomotive"/>
+  </trains>
+  <trains xsi:type="depot:RegionalTrain" name="r1">
+    <coaches xsi:type="depot:Locomotive"/>
+    <coaches xsi:type="depot:FirstClassPassengerCoach" identifier="3"/>
+    <coaches xsi:type="depot:SecondClassPassengerCoach"/>
+    <coaches xsi:type="depot:Locomotive"/>
+  </trains>
+</depot:Depot>
