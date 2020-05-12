@@ -2,6 +2,7 @@ grammar org.mdse.pts.schedule.dsl.Schedule with org.eclipse.xtext.common.Termina
 
 import "http://mdse.org/pts/network" as network
 import "http://mdse.org/pts/depot" as depot
+import "http://mdse.org/pts/common" as common
 import "http://mdse.org/pts/schedule"
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
@@ -16,16 +17,26 @@ TrainSchedule:
 	route=Route
 ;
 
-Frequency returns Frequency:
-	MultiDaysSingleTimeFrequency | SingleDaysMultiTimeFrequency
+Frequency:
+	"on" day+=DepartureDay ("," day+=DepartureDay)* "at" time+=Time ("," time+=Time)*
 ;
 
-MultiDaysSingleTimeFrequency returns Frequency:
-	"on" day+=DepartureDay ("," day+=DepartureDay)* "at" time+=DepartureTime
+Time returns common::Time:
+	hours=INT ":" minutes=INT
+	;
+
+DepartureDay:
+	weekday=WeekDay
 ;
 
-SingleDaysMultiTimeFrequency returns Frequency:
-	"on" day+=DepartureDay "at" time+=DepartureTime ("," time+=DepartureTime)*
+enum WeekDay returns common::WeekDay:
+	MONDAY = 'MONDAY' | 
+	TUESDAY = 'TUESDAY' | 
+	WEDNESDAY = 'WEDNESDAY' | 
+	THURSDAY = 'THURSDAY' | 
+	FRIDAY = 'FRIDAY' | 
+	SATURDAY = 'SATURDAY' | 
+	SUNDAY = 'SUNDAY'
 ;
 
 Route:
@@ -47,32 +58,6 @@ ViaStop returns Stop:
 
 TerminateStop returns Stop:
 	"terminate" "at" station=[network::Station] "on" "platform" platform=INT
-;
-
-DepartureTime returns DepartureTime:
-	hour=INT ":" minutes=INT
-	;
-
-DepartureDay:
-	weekday=WeekDay
-;
-
-enum WeekDay returns WeekDay:
-	MONDAY = 'MONDAY' | 
-	TUESDAY = 'TUESDAY' | 
-	WEDNESDAY = 'WEDNESDAY' | 
-	THURSDAY = 'THURSDAY' | 
-	FRIDAY = 'FRIDAY' | 
-	SATURDAY = 'SATURDAY' | 
-	SUNDAY = 'SUNDAY'
-;
-
-terminal fragment LETTER:
-	('a'..'z' | 'A'..'Z')
-;
-
-terminal fragment DIGIT:
-	('0'..'9')
 ;
 
 // Below could possibly removed, verify!
