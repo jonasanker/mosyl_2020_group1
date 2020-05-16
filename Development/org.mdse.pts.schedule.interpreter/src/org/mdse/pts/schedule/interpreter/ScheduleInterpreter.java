@@ -11,9 +11,9 @@ import org.mdse.pts.timetable.Departure;
 import org.mdse.pts.timetable.Timetable;
 import org.mdse.pts.timetable.TimetableFactory;
 
-import common.CommonFactory;
-import common.Time;
-import common.WeekDay;
+import org.mdse.pts.common.CommonFactory;
+import org.mdse.pts.common.Time;
+import org.mdse.pts.common.WeekDay;
 
 import org.mdse.pts.network.Leg;
 import org.mdse.pts.network.Network;
@@ -39,8 +39,8 @@ public class ScheduleInterpreter {
 	
 	private void interpretTrainSchedules(EList<TrainSchedule> trainSchedules, EList<Station> stations, HashMap<String, Timetable> timetables) {
 		for(TrainSchedule trainSchedule : trainSchedules) {
-			EList<Frequency> frequencies = trainSchedule.getFrequency();
-			EList<Stop> routeStops = trainSchedule.getRoute().getStop();
+			EList<Frequency> frequencies = trainSchedule.getFrequencies();
+			EList<Stop> routeStops = trainSchedule.getRoute().getStops();
 			Train train = trainSchedule.getTrain();
 			for(Frequency frequency : frequencies) {
 				for(Time time : frequency.getTime()) {
