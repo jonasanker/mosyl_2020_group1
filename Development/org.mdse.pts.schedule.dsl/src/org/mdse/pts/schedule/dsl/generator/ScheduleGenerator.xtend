@@ -16,6 +16,10 @@ import org.eclipse.xtext.generator.IGeneratorContext
 class ScheduleGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+		throw new RuntimeException("lol")
+		//println("TEST!!");
+		//project -> buil dautomatically
 		//TODO: Generate
+		//var schedule = resource.contenst.get(0) as Schedule;
 	}
 }
