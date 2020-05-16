@@ -9,7 +9,7 @@ Bundle-Activator: org.mdse.pts.schedule.presentation.ScheduleEditorPlugin$Implem
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: common.presentation,
+Export-Package: org.mdse.pts.common.presentation,
  org.mdse.pts.schedule.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,

@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ScheduleValidation
+Bundle-SymbolicName: org.mdse.pts.schedule.validation;singleton:=true
+Bundle-Version: 1.0.0
+Automatic-Module-Name: org.mdse.pts.schedule.validation
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.mdse.pts.schedule;bundle-version="1.0.0",
+ org.eclipse.ui;bundle-version="3.116.0",
+ org.eclipse.core.runtime.source;bundle-version="3.17.100",
+ org.eclipse.core.expressions;bundle-version="3.6.700",
+ org.eclipse.emf.validation;bundle-version="1.8.0"

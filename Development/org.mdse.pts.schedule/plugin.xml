@@ -18,7 +18,7 @@
       <!-- @generated Schedule -->
       <package
             uri="http://mdse.org/pts/common"
-            class="common.CommonPackage"
+            class="org.mdse.pts.common.CommonPackage"
             genModel="model/Schedule.genmodel"/>
    </extension>
 

@@ -8,9 +8,9 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Automatic-Module-Name: org.mdse.pts.schedule
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: common,
- common.impl,
- common.util,
+Export-Package: org.mdse.pts.common,
+ org.mdse.pts.common.impl,
+ org.mdse.pts.common.util,
  org.mdse.pts.schedule,
  org.mdse.pts.schedule.impl,
  org.mdse.pts.schedule.util

@@ -46,6 +46,11 @@ Workflow {
 			generator = {
 				generateXtendStub = true
 			}
+			parserGenerator = {
+				options = {
+					ignoreCase = true
+				}
+			}
 			junitSupport = {
 				junitVersion = "5"
 			}

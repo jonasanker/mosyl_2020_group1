@@ -14,19 +14,19 @@ class Schedule {
 
 class TrainSchedule {
 	ref depot.Train[1] train;
-	ref Route[1] route;
-	val Frequency[+] frequency;
+	val Route[1] route;
+	val Frequency[+] frequencies;
 }
 
 class Route {
-	val Stop[*] stop;
+	val Stop[*] stops;
 }
 
 class Stop {
-	ref network.Station[1] Station;
-	attr int[1] Platform;
-	attr int[1] Duration;
-	attr boolean[1] ShouldTurnAround;
+	ref network.Station[1] station;
+	attr int[1] platform;
+	attr int[1] duration;
+	attr boolean[1] shouldTurnAround;
 	ref network.Leg via;
 }
 
