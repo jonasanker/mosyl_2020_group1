@@ -61,4 +61,5 @@
             contributorClass="org.mdse.pts.common.presentation.CommonActionBarContributor">
       </editor>
    </extension>
+
 </plugin>

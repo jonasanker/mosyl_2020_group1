@@ -1,0 +1,35 @@
+// Network and Depot names must be the same as their file name 
+Schedule for Sydbanen with Hillerod1
+
+// Unsupported train
+Train Regio151
+On Monday at 13:10
+Start at Hillerod on platform 1,
+Drive via HillerodEast
+Stop at Holte on platform 2 for 1 min and turn around,
+Terminate at Lyngby on platform 1,
+
+// No leg connecting
+Train Regio151
+On Wednesday at 13:00
+Start at Lyngby on platform 2,
+Terminate at Hillerod on platform 3,
+
+// More than one leg between stations
+Train Regio151
+On Wednesday at 13:00
+Start at Holte on platform 2,
+Terminate at Hillerod on platform 3,
+
+// Same stations
+Train Regio151
+On Wednesday at 13:00
+Start at Holte on platform 2,
+Terminate at Holte on platform 3,
+
+// Wrong leg provided
+Train Regio151
+On Wednesday at 13:00
+Start at Holte on platform 2,
+Drive via LyngbyHolte
+Terminate at Hillerod on platform 3
