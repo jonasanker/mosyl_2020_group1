@@ -22,18 +22,17 @@
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="nonEmptyLegNamesMustBeUnique" value="&#xA;&#x9;&#x9;&#x9;legs -> forAll(l1 |&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;legs -> forAll(l2 |&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;l1 &lt;> l2 implies l1.name &lt;> l2.name))"/>
-      <details key="legMustHaveANameIfMoreThanOneLegBetweenTwoStations" value="&#xA;&#x9;&#x9;&#x9;legs -> forAll(l1 |&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;legs -> forAll(l2 |&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;l1 &lt;> l2 &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;and&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;l1.station1 = l2.station1 and l1.station2 = l2.station2&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;or &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;l1.station1 = l2.station2 and l1.station2 = l2.station1&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;implies&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;l1.name.size() > 0 and l2.name.size() > 0&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;&#x9;&#x9;)"/>
+      <details key="legMustHaveANameIfMoreThanOneLegBetweenTwoStations" value="&#xA;&#x9;&#x9;&#x9;legs -> forAll(l1 |&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;legs -> forAll(l2 |&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;l1 &lt;> l2 &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;and l1.stations->first() = l2.stations->first() &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;and l1.stations->last() = l2.stations->last()&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;or l1.stations->first() = l2.stations->last() &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;and l1.stations->last() = l2.stations->first()&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;implies&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;l1.name.size() > 0 and l2.name.size() > 0&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;&#x9;&#x9;)"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="legs" upperBound="-1" eType="#//Leg"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="legs" upperBound="-1" eType="#//Leg"
+        eOpposite="#//Leg/stations"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Leg">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="distance" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="station1" lowerBound="1"
-        eType="#//Station"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="station2" lowerBound="1"
-        eType="#//Station"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stations" lowerBound="2"
+        upperBound="2" eType="#//Station" eOpposite="#//Station/legs"/>
   </eClassifiers>
 </ecore:EPackage>
