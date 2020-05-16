@@ -54,7 +54,7 @@ public class ScheduleInterpreter {
 							if(i < routeStops.size()-1) nextStation = stop.getStation();
 							Station station = stop.getStation();
 							
-							int minutes = getRunTimeInMinutes(stop.getVia(), station);
+							int minutes = getRunTimeInMinutes(stop.getVia(), prevStation, station);
 							
 							currentTime = addMinutesToTime(currentTime, minutes);
 							addArrival(timetables, station, prevStation, currentTime, day.getWeekday(), train, stop.getPlatform());
@@ -72,11 +72,13 @@ public class ScheduleInterpreter {
 		}
 	}
 	
-	private int getRunTimeInMinutes(Leg via, Station station) {
+	private int getRunTimeInMinutes(Leg via, Station prevStation, Station station) {
+		if(prevStation == null) return 0;
+		if(via != null) return via.getDistance();
+		
 		int distance = 0;
-		List<Leg> legsToStop = getLegsEndingAtStation(station);
-		if(via != null) distance = via.getDistance();
-		else if(legsToStop.size() >= 1) distance = legsToStop.get(0).getDistance(); //if multiple legs and no via, just take the first
+		List<Leg> legsToStop = getLegsBetweenStations(prevStation, station);
+		if(legsToStop.size() >= 1) distance = legsToStop.get(0).getDistance(); //if has legs and no via, just take the first
 		else throw new ScheduleInterpreterException("No legs goes to this station! " + station.getName());
 		int minutes = distance / 2; //TODO: train.getSpeed()/60; //(kilometers per minute)
 		return minutes;
@@ -113,20 +115,12 @@ public class ScheduleInterpreter {
 		return timetables;
 	}
 	
-	private List<Leg> getLegsOriginatingFromStation(Station origin) {
-		List<Leg> legs = new ArrayList<>();
-		for(Leg leg : origin.getLegs()) {
-			if(leg.getStation1().getName().equals(origin.getName())) {
-				legs.add(leg);
-			}
-		}
-		return legs;
-	}
-	
-	private List<Leg> getLegsEndingAtStation(Station destination) {
+	private List<Leg> getLegsBetweenStations(Station origin, Station destination) {
 		List<Leg> legs = new ArrayList<>();
 		for(Leg leg : destination.getLegs()) {
-			if(leg.getStation2().getName().equals(destination.getName())) {
+			//I assume station names are unique
+			if((leg.getStation1().getName().equals(origin.getName()) && leg.getStation2().getName().equals(destination.getName())) || 
+				(leg.getStation2().getName().equals(origin.getName()) && leg.getStation1().getName().equals(destination.getName()))) {
 				legs.add(leg);
 			}
 		}
