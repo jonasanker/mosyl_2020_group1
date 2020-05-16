@@ -47,6 +47,8 @@ public class ScheduleInterpreter {
 					for(DepartureDay day : frequency.getDay()) {
 						Station prevStation = null;
 						Time currentTime = time;
+						Time nextTime = time;
+						WeekDay weekDay = day.getWeekday();
 						for(int i = 0; i < routeStops.size(); i++) {
 							Stop stop = routeStops.get(i);
 							
@@ -56,11 +58,15 @@ public class ScheduleInterpreter {
 							
 							int minutes = getRunTimeInMinutes(stop.getVia(), prevStation, station);
 							
-							currentTime = addMinutesToTime(currentTime, minutes);
-							addArrival(timetables, station, prevStation, currentTime, day.getWeekday(), train, stop.getPlatform());
+							nextTime = addMinutesToTime(currentTime, minutes);
+							weekDay = getDay(weekDay, currentTime, nextTime);
+							currentTime = nextTime;
+							addArrival(timetables, station, prevStation, currentTime, weekDay, train, stop.getPlatform());
 							
-							currentTime = addMinutesToTime(currentTime, stop.getDuration());
-							addDeparture(timetables, station, nextStation, currentTime, day.getWeekday(), train, stop.getPlatform());
+							nextTime = addMinutesToTime(currentTime, stop.getDuration());
+							weekDay = getDay(weekDay, currentTime, nextTime);
+							currentTime = nextTime;
+							addDeparture(timetables, station, nextStation, currentTime, weekDay, train, stop.getPlatform());
 							
 							prevStation = station;
 						}
@@ -128,7 +134,11 @@ public class ScheduleInterpreter {
 	}
 	
 	private Time addMinutesToTime(Time time, int minutes) {
-		return minutesToTime(timeToMinutes(time)+minutes);
+		//I assume that no trip between neighboring stations will be >= 24h
+		int fullDayMinutes = 1440;
+		int resultingMinutes = timeToMinutes(time)+minutes;
+		if(resultingMinutes >= fullDayMinutes) resultingMinutes -= 2400; //if >= 24h, reset time to beginning of day
+		return minutesToTime(resultingMinutes);
 	}
 	
 	private int timeToMinutes(Time time) {
@@ -140,5 +150,31 @@ public class ScheduleInterpreter {
 		time.setHours(minutes/60);
 		time.setMinutes(minutes%60);
 		return time;
+	}
+	
+	private WeekDay getDay(WeekDay day, Time lastTime, Time nextTime) {
+		if(timeToMinutes(nextTime) < timeToMinutes(lastTime)) return getNextDay(day);
+		return day;
+	}
+	
+	private WeekDay getNextDay(WeekDay day) {
+		switch(day) {
+		case FRIDAY:
+			return WeekDay.SATURDAY;
+		case MONDAY:
+			return WeekDay.TUESDAY;
+		case SATURDAY:
+			return WeekDay.SUNDAY;
+		case SUNDAY:
+			return WeekDay.MONDAY;
+		case THURSDAY:
+			return WeekDay.FRIDAY;
+		case TUESDAY:
+			return WeekDay.WEDNESDAY;
+		case WEDNESDAY:
+			return WeekDay.THURSDAY;
+		default:
+			return WeekDay.MONDAY;
+		}
 	}
 }
