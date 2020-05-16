@@ -15,6 +15,7 @@
     <genClasses image="false" ecoreClass="Depot.ecore#//Train">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Depot.ecore#//Train/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Depot.ecore#//Train/coaches"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Depot.ecore#//Train/trainSpeed"/>
     </genClasses>
     <genClasses ecoreClass="Depot.ecore#//IntercityTrain"/>
     <genClasses ecoreClass="Depot.ecore#//RegionalTrain"/>

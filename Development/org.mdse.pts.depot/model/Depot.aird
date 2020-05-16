@@ -4,7 +4,7 @@
     <semanticResources>Depot.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_fCF3sH5rEeqIgMB-hO0ZwA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_xPoZsY7TEeq6h6Wy1S-kww" name="depot class diagram" repPath="#_xPmkgI7TEeq6h6Wy1S-kww" changeId="063b9b0d-589e-410d-be52-3e40a9adca76">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_xPoZsY7TEeq6h6Wy1S-kww" name="depot class diagram" repPath="#_xPmkgI7TEeq6h6Wy1S-kww" changeId="a47aaea5-3338-4b00-be69-3a57db5592c0">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="Depot.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -47,6 +47,12 @@
             <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
           </endLabelStyleDescription>
         </computedStyleDescriptions>
+        <computedStyleDescriptions xmi:type="style:BundledImageDescription" xmi:id="_EmascZfNEeqBI9_J9b0ifA" labelExpression="service:render" labelAlignment="LEFT" tooltipExpression="service:renderTooltip" sizeComputationExpression="1">
+          <borderColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelFormat>bold</labelFormat>
+          <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+          <color xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+        </computedStyleDescriptions>
       </data>
     </ownedAnnotationEntries>
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_xPoZso7TEeq6h6Wy1S-kww" source="GMF_DIAGRAMS">
@@ -70,6 +76,10 @@
             <children xmi:type="notation:Node" xmi:id="_xc_gSo7TEeq6h6Wy1S-kww" type="3010" element="_xc4yko7TEeq6h6Wy1S-kww">
               <styles xmi:type="notation:FontStyle" xmi:id="_xc_gS47TEeq6h6Wy1S-kww" fontName="Segoe UI" fontHeight="8" bold="true"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_xc_gTI7TEeq6h6Wy1S-kww"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="__VhakJfMEeqBI9_J9b0ifA" type="3010" element="__VPGsJfMEeqBI9_J9b0ifA">
+              <styles xmi:type="notation:FontStyle" xmi:id="__VhakZfMEeqBI9_J9b0ifA" fontColor="2697711" fontName="Ubuntu" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="__VhakpfMEeqBI9_J9b0ifA"/>
             </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_xc9EDI7TEeq6h6Wy1S-kww"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_xc9EDY7TEeq6h6Wy1S-kww"/>
@@ -319,7 +329,7 @@
     <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_xczTAI7TEeq6h6Wy1S-kww" name="Train" tooltipText="" outgoingEdges="_xc6nwI7TEeq6h6Wy1S-kww" incomingEdges="_xc6AsI7TEeq6h6Wy1S-kww _xc7O0I7TEeq6h6Wy1S-kww _xc7O147TEeq6h6Wy1S-kww" width="12" height="10">
       <target xmi:type="ecore:EClass" href="Depot.ecore#//Train"/>
       <semanticElements xmi:type="ecore:EClass" href="Depot.ecore#//Train"/>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_xczTAY7TEeq6h6Wy1S-kww" iconPath="/org.eclipse.emf.ecoretools.design/icons/full/obj16/EClass_abstract.gif" borderSize="1" borderSizeComputationExpression="1" borderColor="125,125,125" backgroundStyle="Liquid" foregroundColor="228,228,228">
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_EmYQM5fNEeqBI9_J9b0ifA" iconPath="/org.eclipse.emf.ecoretools.design/icons/full/obj16/EClass_abstract.gif" borderSize="1" borderSizeComputationExpression="1" borderColor="125,125,125" backgroundStyle="Liquid" foregroundColor="228,228,228">
         <labelFormat>italic</labelFormat>
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@conditionnalStyles.1/@style"/>
       </ownedStyle>
@@ -328,6 +338,14 @@
         <target xmi:type="ecore:EAttribute" href="Depot.ecore#//Train/name"/>
         <semanticElements xmi:type="ecore:EAttribute" href="Depot.ecore#//Train/name"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_xc4ylI7TEeq6h6Wy1S-kww" labelAlignment="LEFT" description="_xc4yk47TEeq6h6Wy1S-kww">
+          <labelFormat>bold</labelFormat>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="__VPGsJfMEeqBI9_J9b0ifA" name="/trainSpeed : EInt" tooltipText="">
+        <target xmi:type="ecore:EAttribute" href="Depot.ecore#//Train/trainSpeed"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="Depot.ecore#//Train/trainSpeed"/>
+        <ownedStyle xmi:type="diagram:BundledImage" uid="_EmbTgZfNEeqBI9_J9b0ifA" labelColor="39,76,114" labelAlignment="LEFT" description="_EmascZfNEeqBI9_J9b0ifA">
           <labelFormat>bold</labelFormat>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>

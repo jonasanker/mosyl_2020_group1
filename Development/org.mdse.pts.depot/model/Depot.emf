@@ -10,6 +10,7 @@ class Depot {
 abstract class Train {
 	attr String[1] name;
 	val Coach[+] coaches;
+	derived attr int[1] trainSpeed;
 }
 
 class IntercityTrain extends Train {
