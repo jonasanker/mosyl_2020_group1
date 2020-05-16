@@ -1,41 +1,39 @@
+@"http://www.eclipse.org/OCL/Import"(ecore="http://www.eclipse.org/emf/2002/Ecore")
 @namespace(uri="http://mdse.org/pts/depot", prefix="depot")
 package depot;
 
 class Depot {
-	unique ref Train[*] trains;
+	val Train[*] trains;
+	attr String[1] name;
 }
 
 abstract class Train {
-	attr EString name;
+	attr String[1] name;
+	val Coach[+] coaches;
 }
 
 class IntercityTrain extends Train {
-	unique ref Coach[2..*] coaches;
 }
 
 class RegionalTrain extends Train {
-	unique ref Coach[1..*] coaches;
 }
 
-enum PassengerClass {
-	FirstClass = 1;
-	SecondClass = 2;
+abstract class Coach {
 }
 
-abstract class Coach {}
-
-class Locomotive extends Coach {}
+class Locomotive extends Coach {
+}
 
 abstract class CoachWithId extends Coach {
-	attr EInt identifier;
+	attr int[1] identifier;
 }
 
-class PassengerCoach extends CoachWithId {
-	attr PassengerClass passengerClass;
+class FirstClassPassengerCoach extends CoachWithId {
+}
+
+class SecondClassPassengerCoach extends CoachWithId {
 }
 
 class DiningCoach extends CoachWithId {
-	
 }
 
-//TODO: Define metamodel

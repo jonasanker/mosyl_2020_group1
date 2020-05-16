@@ -8,7 +8,10 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Automatic-Module-Name: org.mdse.pts.timetable
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: org.mdse.pts.timetable,
+Export-Package: org.mdse.pts.common,
+ org.mdse.pts.common.impl,
+ org.mdse.pts.common.util,
+ org.mdse.pts.timetable,
  org.mdse.pts.timetable.impl,
  org.mdse.pts.timetable.util
 Require-Bundle: org.eclipse.core.runtime,

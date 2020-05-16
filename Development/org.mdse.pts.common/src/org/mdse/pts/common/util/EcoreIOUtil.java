@@ -585,7 +585,7 @@ public class EcoreIOUtil {
 		return project;
 	}
 	
-	protected static IFile resolveRelativeFileFromEObject(EObject eObject) {
+	public static IFile resolveRelativeFileFromEObject(EObject eObject) {
 		Resource resource = eObject.eResource();
 		
 		if (resource == null) {

@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="depot" nsURI="http://mdse.org/pts/depot" nsPrefix="depot">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+  </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="Depot">
     <eStructuralFeatures xsi:type="ecore:EReference" name="trains" upperBound="-1"
-        eType="#//Train"/>
+        eType="#//Train" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Train" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IntercityTrain" eSuperTypes="#//Train">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="coaches" lowerBound="2"
-        upperBound="-1" eType="#//Coach"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RegionalTrain" eSuperTypes="#//Train">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="coaches" lowerBound="1"
-        upperBound="-1" eType="#//Coach"/>
+        upperBound="-1" eType="#//Coach" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="PassengerClass">
-    <eLiterals name="FirstClass" value="1"/>
-    <eLiterals name="SecondClass" value="2"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntercityTrain" eSuperTypes="#//Train"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RegionalTrain" eSuperTypes="#//Train"/>
   <eClassifiers xsi:type="ecore:EClass" name="Coach" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="Locomotive" eSuperTypes="#//Coach"/>
   <eClassifiers xsi:type="ecore:EClass" name="CoachWithId" abstract="true" eSuperTypes="#//Coach">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PassengerCoach" eSuperTypes="#//CoachWithId">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="passengerClass" eType="#//PassengerClass"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FirstClassPassengerCoach" eSuperTypes="#//CoachWithId"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SecondClassPassengerCoach" eSuperTypes="#//CoachWithId"/>
   <eClassifiers xsi:type="ecore:EClass" name="DiningCoach" eSuperTypes="#//CoachWithId"/>
 </ecore:EPackage>

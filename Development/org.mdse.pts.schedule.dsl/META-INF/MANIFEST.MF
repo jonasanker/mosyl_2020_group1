@@ -22,5 +22,6 @@ Export-Package: org.mdse.pts.schedule.dsl.parser.antlr,
  org.mdse.pts.schedule.dsl.scoping,
  org.mdse.pts.schedule.dsl.generator,
  org.mdse.pts.schedule.dsl.services,
- org.mdse.pts.schedule.dsl.validation
+ org.mdse.pts.schedule.dsl.validation,
+ org.mdse.pts.schedule.dsl.parser.antlr.lexer
 Import-Package: org.apache.log4j
