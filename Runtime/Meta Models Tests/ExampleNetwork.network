@@ -2,9 +2,9 @@
 <network:Network xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:network="http://mdse.org/pts/network" name="DK Jernbanen">
   <stations name="Roskilde" legs="//@legs.0 //@legs.2"/>
   <stations name="Svebolle" legs="//@legs.1 //@legs.0 //@legs.3"/>
-  <stations name="New Station2" legs="//@legs.1 //@legs.2 //@legs.3"/>
-  <legs name="track1" distance="33" stations="//@stations.0 //@stations.1"/>
-  <legs name="track2" distance="123" stations="//@stations.2 //@stations.1"/>
-  <legs name="NewTracks" distance="13" stations="//@stations.2 //@stations.0"/>
-  <legs name="default" distance="-1" stations="//@stations.2 //@stations.1"/>
+  <stations name="New Cool Station 2" legs="//@legs.1 //@legs.2 //@legs.3"/>
+  <legs name="mytracking" distance="123" stations="//@stations.0 //@stations.1"/>
+  <legs name="hello tracks" distance="123" stations="//@stations.2 //@stations.1"/>
+  <legs name="trax" distance="999" stations="//@stations.2 //@stations.0"/>
+  <legs name="yeah" distance="12" stations="//@stations.2 //@stations.1"/>
 </network:Network>

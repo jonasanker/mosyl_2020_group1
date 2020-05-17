@@ -3,17 +3,17 @@
   <ownedViewpoints name="Network Viewpoint" modelFileExtension="network">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Network Diagram Representation" domainClass="network.Network" enablePopupBars="true">
       <defaultLayer name="Default">
-        <nodeMappings name="StationNode" domainClass="network.Station">
+        <nodeMappings name="StationNode" labelDirectEdit="//@ownedViewpoints[name='Network%20Viewpoint']/@ownedRepresentations[name='Network%20Diagram%20Representation']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Station%20Name']" domainClass="network.Station">
           <style xsi:type="style:WorkspaceImageDescription" labelSize="14" showIcon="false" iconPath="/org.mdse.pts.network.dsl/icons/train_red_32x32.png" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.mdse.pts.network.dsl/icons/train_red_32x32.png">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelFormat>bold</labelFormat>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="LegEdge" sourceMapping="//@ownedViewpoints[name='Network%20Viewpoint']/@ownedRepresentations[name='Network%20Diagram%20Representation']/@defaultLayer/@nodeMappings[name='StationNode']" targetMapping="//@ownedViewpoints[name='Network%20Viewpoint']/@ownedRepresentations[name='Network%20Diagram%20Representation']/@defaultLayer/@nodeMappings[name='StationNode']" targetFinderExpression="[stations->last()/]" sourceFinderExpression="[stations->first()/]" domainClass="network.Leg" useDomainElement="true">
+        <edgeMappings name="LegEdge" labelDirectEdit="//@ownedViewpoints[name='Network%20Viewpoint']/@ownedRepresentations[name='Network%20Diagram%20Representation']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Leg%20Label']" sourceMapping="//@ownedViewpoints[name='Network%20Viewpoint']/@ownedRepresentations[name='Network%20Diagram%20Representation']/@defaultLayer/@nodeMappings[name='StationNode']" targetMapping="//@ownedViewpoints[name='Network%20Viewpoint']/@ownedRepresentations[name='Network%20Diagram%20Representation']/@defaultLayer/@nodeMappings[name='StationNode']" targetFinderExpression="[stations->last()/]" sourceFinderExpression="[stations->first()/]" domainClass="network.Leg" useDomainElement="true">
           <style lineStyle="dash" targetArrow="NoDecoration" sizeComputationExpression="3">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelSize="12" showIcon="false" labelExpression="[self.name + '\n' + self.distance+ 'km'/]">
+            <centerLabelStyleDescription labelSize="12" showIcon="false" labelExpression="[self.name + '\n' + self.distance + 'km'/]">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -41,6 +41,20 @@
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="stations" valueExpression="var:source"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="stations" valueExpression="var:target"/>
                 </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Edit Station Name" label="Station Name">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Edit Leg Label" label="Leg Label">
+            <mask mask="{0} {1}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="distance" valueExpression="var:1"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
