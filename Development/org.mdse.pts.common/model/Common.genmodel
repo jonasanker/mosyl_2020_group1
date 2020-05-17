@@ -6,7 +6,7 @@
     testsDirectory="/org.mdse.pts.common.tests/src-gen" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
   <foreignModel>Common.ecore</foreignModel>
-  <genPackages prefix="Common" disposableProviderFactory="true" ecorePackage="Common.ecore#/">
+  <genPackages prefix="Common" basePackage="org.mdse.pts" disposableProviderFactory="true" ecorePackage="Common.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Common.ecore#//WeekDay">
       <genEnumLiterals ecoreEnumLiteral="Common.ecore#//WeekDay/MONDAY"/>
       <genEnumLiterals ecoreEnumLiteral="Common.ecore#//WeekDay/TUESDAY"/>
