@@ -24,7 +24,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="network.Station" referenceName="stations">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New Station"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="StationName"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -36,7 +36,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[eContainer(network::Network)/]">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="network.Leg" referenceName="legs">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="NewTracks"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="TracksName"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="distance" valueExpression="-1"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="stations" valueExpression="var:source"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="stations" valueExpression="var:target"/>

@@ -18,9 +18,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Station">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="nonEmptyLegNamesMustBeUnique legMustHaveANameIfMoreThanOneLegBetweenTwoStations"/>
+      <details key="constraints" value="notDefaultName nonEmptyLegNamesMustBeUnique legMustHaveANameIfMoreThanOneLegBetweenTwoStations"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="notDefaultName" value="name &lt;> 'StationName'"/>
       <details key="nonEmptyLegNamesMustBeUnique" value="&#xA;&#x9;&#x9;&#x9;legs -> forAll(l1 |&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;legs -> forAll(l2 |&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;l1 &lt;> l2 implies l1.name &lt;> l2.name))"/>
       <details key="legMustHaveANameIfMoreThanOneLegBetweenTwoStations" value="&#xA;&#x9;&#x9;&#x9;legs -> forAll(l1 |&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;legs -> forAll(l2 |&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;l1 &lt;> l2 &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;and l1.stations->first() = l2.stations->first() &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;and l1.stations->last() = l2.stations->last()&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;or l1.stations->first() = l2.stations->last() &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;and l1.stations->last() = l2.stations->first()&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;implies&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;l1.name.size() > 0 and l2.name.size() > 0&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;&#x9;&#x9;)"/>
     </eAnnotations>
@@ -29,6 +30,13 @@
         eOpposite="#//Leg/stations"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Leg">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="distanceGreaterThanZero notDefaultName"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="distanceGreaterThanZero" value="distance > 0"/>
+      <details key="notDefaultName" value="name &lt;> 'TracksName'"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="distance" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
