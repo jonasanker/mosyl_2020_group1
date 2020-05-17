@@ -3,14 +3,14 @@
   <ownedViewpoints name="Network Viewpoint" modelFileExtension="network">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Network Diagram Representation" domainClass="network.Network" enablePopupBars="true">
       <defaultLayer name="Default">
-        <nodeMappings name="Station" domainClass="network.Station">
+        <nodeMappings name="StationNode" domainClass="network.Station">
           <style xsi:type="style:WorkspaceImageDescription" labelSize="14" showIcon="false" iconPath="/org.mdse.pts.network.dsl/icons/train_red_32x32.png" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.mdse.pts.network.dsl/icons/train_red_32x32.png">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelFormat>bold</labelFormat>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="Leg" sourceMapping="//@ownedViewpoints[name='Network%20Viewpoint']/@ownedRepresentations[name='Network%20Diagram%20Representation']/@defaultLayer/@nodeMappings[name='Station']" targetMapping="//@ownedViewpoints[name='Network%20Viewpoint']/@ownedRepresentations[name='Network%20Diagram%20Representation']/@defaultLayer/@nodeMappings[name='Station']" targetFinderExpression="[stations->last()/]" sourceFinderExpression="[stations->first()/]" domainClass="network.Leg" useDomainElement="true">
+        <edgeMappings name="LegEdge" sourceMapping="//@ownedViewpoints[name='Network%20Viewpoint']/@ownedRepresentations[name='Network%20Diagram%20Representation']/@defaultLayer/@nodeMappings[name='StationNode']" targetMapping="//@ownedViewpoints[name='Network%20Viewpoint']/@ownedRepresentations[name='Network%20Diagram%20Representation']/@defaultLayer/@nodeMappings[name='StationNode']" targetFinderExpression="[stations->last()/]" sourceFinderExpression="[stations->first()/]" domainClass="network.Leg" useDomainElement="true">
           <style lineStyle="dash" targetArrow="NoDecoration" sizeComputationExpression="3">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelSize="12" showIcon="false" labelExpression="[self.name + '\n' + self.distance+ 'km'/]">
@@ -19,25 +19,25 @@
           </style>
         </edgeMappings>
         <toolSections name="General Tool Section" label="General">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Station Creation Tool" label="Station" nodeMappings="//@ownedViewpoints[name='Network%20Viewpoint']/@ownedRepresentations[name='Network%20Diagram%20Representation']/@defaultLayer/@nodeMappings[name='Station']" iconPath="/org.mdse.pts.network.dsl/icons/train_red_32x32.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Station Creation Tool" label="Station" nodeMappings="//@ownedViewpoints[name='Network%20Viewpoint']/@ownedRepresentations[name='Network%20Diagram%20Representation']/@defaultLayer/@nodeMappings[name='StationNode']" iconPath="/org.mdse.pts.network.dsl/icons/train_red_32x32.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Station" referenceName="stations">
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="network.Station" referenceName="stations">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New Station"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Leg Creation Tool" label="Leg" edgeMappings="//@ownedViewpoints[name='Network%20Viewpoint']/@ownedRepresentations[name='Network%20Diagram%20Representation']/@defaultLayer/@edgeMappings[name='Leg']" iconPath="/org.mdse.pts.network.dsl/icons/rail_straight_16x16.png">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Leg Creation Tool" label="Leg" edgeMappings="//@ownedViewpoints[name='Network%20Viewpoint']/@ownedRepresentations[name='Network%20Diagram%20Representation']/@defaultLayer/@edgeMappings[name='LegEdge']" iconPath="/org.mdse.pts.network.dsl/icons/rail_straight_16x16.png">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Leg" referenceName="legs">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[eContainer(network::Network)/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="network.Leg" referenceName="legs">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="NewTracks"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="distance" valueExpression="42"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="distance" valueExpression="-1"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="stations" valueExpression="var:source"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="stations" valueExpression="var:target"/>
                 </subModelOperations>
