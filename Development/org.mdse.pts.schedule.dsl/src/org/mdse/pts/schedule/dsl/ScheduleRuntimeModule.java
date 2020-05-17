@@ -3,7 +3,9 @@
  */
 package org.mdse.pts.schedule.dsl;
 
+import org.eclipse.xtext.generator.IGenerator2;
 import org.eclipse.xtext.linking.ILinkingService;
+import org.mdse.pts.schedule.dsl.generator.ScheduleGenerator;
 import org.mdse.pts.schedule.dsl.linking.ScheduleLinkingService;
 
 /**
@@ -13,5 +15,10 @@ public class ScheduleRuntimeModule extends AbstractScheduleRuntimeModule {
 	@Override
 	public Class<? extends ILinkingService> bindILinkingService() {
 		return ScheduleLinkingService.class;
+	}
+	
+	@Override
+	public Class<? extends IGenerator2> bindIGenerator2() {
+		return ScheduleGenerator.class;
 	}
 }
