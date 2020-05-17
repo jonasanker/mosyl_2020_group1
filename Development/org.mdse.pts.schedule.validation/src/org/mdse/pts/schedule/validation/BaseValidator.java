@@ -6,13 +6,15 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
-public class BaseValidator {
+public abstract class BaseValidator {
 
 	private final DiagnosticChain diagnostics;
 
 	public BaseValidator(DiagnosticChain diagnostics) {
 		this.diagnostics = diagnostics;
 	}
+	
+	public abstract boolean validate();
 
 	protected void reportValidationErrors(List<ValidationError> validationErrors) {
 		validationErrors.forEach(validationError -> {

@@ -19,6 +19,7 @@ public class FrequencyValidator extends BaseValidator {
 		this.frequency = frequency;
 	}
 
+	@Override
 	public boolean validate() {
 		validateTime();
 
