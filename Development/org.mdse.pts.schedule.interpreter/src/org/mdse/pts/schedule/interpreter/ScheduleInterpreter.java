@@ -43,8 +43,8 @@ public class ScheduleInterpreter {
 			EList<Stop> routeStops = trainSchedule.getRoute().getStops();
 			Train train = trainSchedule.getTrain();
 			for(Frequency frequency : frequencies) {
-				for(Time time : frequency.getTime()) {
-					for(DepartureDay day : frequency.getDay()) {
+				for(DepartureDay day : frequency.getDay()) {
+					for(Time time : frequency.getTime()) {
 						Station prevStation = null;
 						Time currentTime = time;
 						Time nextTime = time;

@@ -8,6 +8,8 @@ Bundle-SymbolicName: org.mdse.pts.schedule.dsl; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.0.0",
  org.mdse.pts.schedule,
+ org.mdse.pts.timetable,
+ org.mdse.pts.common,
  org.eclipse.xtext,
  org.eclipse.xtext.xbase,
  org.eclipse.equinox.common;bundle-version="3.5.0",
@@ -16,7 +18,8 @@ Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.0.0",
  org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
  org.eclipse.emf.ecore,
  org.eclipse.xtend.lib,
- org.eclipse.emf.common
+ org.eclipse.emf.common,
+ org.mdse.pts.schedule.interpreter;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.mdse.pts.schedule.dsl.parser.antlr,
  org.mdse.pts.schedule.dsl.parser.antlr.internal,

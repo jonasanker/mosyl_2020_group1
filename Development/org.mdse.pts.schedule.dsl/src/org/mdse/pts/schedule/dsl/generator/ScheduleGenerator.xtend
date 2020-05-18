@@ -7,6 +7,19 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import org.mdse.pts.schedule.Schedule
+import org.mdse.pts.timetable.Timetable
+import org.mdse.pts.schedule.interpreter.ScheduleInterpreter
+import java.util.Map.Entry
+import org.mdse.pts.timetable.Arrival
+import org.mdse.pts.timetable.Departure
+import org.mdse.pts.common.util.EcoreIOUtil
+import org.eclipse.core.resources.IFile
+import org.eclipse.core.resources.IWorkspace
+import org.eclipse.core.resources.IWorkspaceRoot
+import org.eclipse.core.resources.IProject
+import org.eclipse.core.resources.IFolder
+import org.eclipse.core.resources.ResourcesPlugin
 
 /**
  * Generates code from your model files on save.
@@ -16,10 +29,28 @@ import org.eclipse.xtext.generator.IGeneratorContext
 class ScheduleGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		throw new RuntimeException("lol")
-		//println("TEST!!");
+		println("TEST!!");
 		//project -> buil dautomatically
 		//TODO: Generate
-		//var schedule = resource.contenst.get(0) as Schedule;
+		var interpreter = new ScheduleInterpreter()
+		var schedule = resource.contents.get(0) as Schedule
+		var timetables = interpreter.interpret(schedule)
+		for(String stationName : timetables.keySet()) {
+			println("-------------")
+			println(stationName)
+			println("arrivals")
+			for(Arrival arr : timetables.get(stationName).getArrivals()) {
+				println(arr.getWeekDay() + " - " + arr.getTime())
+			}
+			println("departures")
+			for(Departure dep : timetables.get(stationName).getDepartures()) {
+				println(dep.getWeekDay() + " - " + dep.getTime())
+			}
+			println("-------------")
+			
+
+		  }
+			//EcoreIOUtil.saveModelAs(timetables.get("Hillerod"),".timetable")
 	}
+	
 }
