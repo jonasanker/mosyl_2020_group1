@@ -137,7 +137,7 @@ public class ScheduleInterpreter {
 		//I assume that no trip between neighboring stations will be >= 24h
 		int fullDayMinutes = 1440;
 		int resultingMinutes = timeToMinutes(time)+minutes;
-		if(resultingMinutes >= fullDayMinutes) resultingMinutes -= 2400; //if >= 24h, reset time to beginning of day
+		if(resultingMinutes >= fullDayMinutes) resultingMinutes -= 1440; //if >= 24h, reset time to beginning of day
 		return minutesToTime(resultingMinutes);
 	}
 	
