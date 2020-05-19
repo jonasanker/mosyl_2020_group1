@@ -6,6 +6,7 @@ DEPOT_GENMODEL=../Development/org.mdse.pts.depot/model/Depot.genmodel
 NETWORK_GENMODEL=../Development/org.mdse.pts.network/model/Network.genmodel
 SCHEDULE_GENMODEL=../Development/org.mdse.pts.schedule/model/Schedule.genmodel
 TIMETABLE_GENMODEL=../Development/org.mdse.pts.timetable/model/Timetable.genmodel
+COMMON_GENMODEL=../Development/org.mdse.pts.common/model/Common.genmodel
 
 SCHEDULE_DSL=Development/org.mdse.pts.schedule.dsl/src/org/mdse/pts/schedule/dsl/GenerateSchedule.mwe2
 
@@ -39,6 +40,11 @@ timetable() {
     generateCode $TIMETABLE_GENMODEL
 }
 
+common() {
+	echo "Generate Common code"
+    generateCode $COMMON_GENMODEL
+}
+
 generateCode() {
     eclipse -noSplash -data ../Development/ -application org.eclipse.emf.codegen.ecore.Generator -model -edit -editor $1
 }
@@ -54,6 +60,7 @@ allCode() {
     network
     schedule
     timetable
+	common
 }
 
 allLangInfrastructure() {
@@ -79,6 +86,9 @@ elif [ "$1" == "schedule-lang" ]; then
 elif [ "$1" == "timetable" ]; then 
     timetable 
 	exit 0
+elif [ "$1" == "common" ]; then 
+    common 
+	exit 0
 elif [ "$1" == "all" ]; then 
     allCode
 	exit 0
@@ -91,6 +101,7 @@ else
 	echo "schedule-lang"
 	echo "timetable"
 	echo "all"
+	echo "common"
 
 	exit 1
 fi
