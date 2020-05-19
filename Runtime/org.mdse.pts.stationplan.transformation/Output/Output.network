@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<network:Network xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:network="http://mdse.org/pts/network">
+  <stations name="Østerport" legs="//@legs.3 //@legs.1"/>
+  <stations name="Nørreport" legs="//@legs.3 //@legs.2"/>
+  <stations name="Vesterport" legs="//@legs.2 //@legs.0"/>
+  <stations name="Københavns Hovedbanegård" legs="//@legs.1 //@legs.0"/>
+  <legs name="Vesterport-KBHH" distance="1" stations="//@stations.2 //@stations.3"/>
+  <legs name="Østerport-KBHH" distance="4" stations="//@stations.0 //@stations.3"/>
+  <legs name="Nørreport-Vesterport" distance="1" stations="//@stations.1 //@stations.2"/>
+  <legs name="Østerport-Nørreport" distance="2" stations="//@stations.0 //@stations.1"/>
+</network:Network>

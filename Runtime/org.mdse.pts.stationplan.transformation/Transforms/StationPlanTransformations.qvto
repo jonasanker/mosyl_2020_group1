@@ -23,6 +23,6 @@ mapping TrainStation::TrainStation2Station() : Station {
 mapping Connection::Connection2Leg() : Leg {
 	name := self.identifier;
 	distance := self.distanceInMeters.div(1000);
-	station1 := self.sourceStation.map TrainStation2Station();
-	station2 := self.targetStation.map TrainStation2Station();
+	stations += self.sourceStation.map TrainStation2Station();
+	stations += self.targetStation.map TrainStation2Station();
 }
