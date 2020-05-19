@@ -8,9 +8,9 @@ class Depot {
 }
 
 abstract class Train {
-	attr String[1] name;
-	val Coach[+] coaches;
-	readonly derived attr int[1] trainSpeed;
+  attr String[1] name;
+  val Coach[*] coaches;
+  derived attr int[1] trainSpeed;
 }
 
 class IntercityTrain extends Train {
