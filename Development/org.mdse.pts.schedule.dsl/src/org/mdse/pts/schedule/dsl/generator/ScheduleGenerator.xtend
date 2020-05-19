@@ -20,37 +20,17 @@ import org.mdse.pts.schedule.interpreter.ScheduleInterpreter
 class ScheduleGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		println("TEST!!");
-		//project -> buil dautomatically
-		//TODO: Generate
-		var interpreter = new ScheduleInterpreter()
-		var schedule = resource.contents.get(0) as Schedule
-		var timetables = interpreter.interpret(schedule)
-		/*for(String stationName : timetables.keySet()) {
-			println("-------------")
-			println(stationName)
-			println("arrivals")
-			for(Arrival arr : timetables.get(stationName).getArrivals()) {
-				println(arr.getWeekDay() + " - " + arr.getTime())
-			}
-			println("departures")
-			for(Departure dep : timetables.get(stationName).getDepartures()) {
-				println(dep.getWeekDay() + " - " + dep.getTime())
-			}
-			println("-------------")
-			
-
-		  }*/
-//		  EcoreIOUtil.s
-
-		//IFile file = null;
 		var project = EclipseUtil.resolveProjectFromResource(resource);
 		var folder = project.getFolder("timetables");
 		
-		//TODO: Do this for all timetables
-		var file = folder.getFile("Hillerod.timetable");
-		EclipseUtil.ensureFolderStructure(file);
-		EcoreIOUtil.saveModelAs(timetables.get("Hillerod"), file);
+		var interpreter = new ScheduleInterpreter()
+		var schedule = resource.contents.get(0) as Schedule
+		var timetables = interpreter.interpret(schedule)
+		for(String stationName : timetables.keySet()) {
+			var file = folder.getFile(stationName + ".timetable");
+			EclipseUtil.ensureFolderStructure(file);
+			EcoreIOUtil.saveModelAs(timetables.get(stationName), file);
+		  }
 		
 		//TODO: get actual HTML code
 		//var html = "Hello World";
