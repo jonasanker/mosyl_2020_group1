@@ -5,8 +5,11 @@ package org.mdse.pts.schedule.dsl;
 
 import org.eclipse.xtext.generator.IGenerator2;
 import org.eclipse.xtext.linking.ILinkingService;
-import org.mdse.pts.schedule.dsl.generator.ScheduleGenerator;
+import org.eclipse.xtext.scoping.IScopeProvider;
 import org.mdse.pts.schedule.dsl.linking.ScheduleLinkingService;
+import org.mdse.pts.schedule.dsl.scoping.ScheduleScopeProvider;
+
+import com.google.inject.Binder;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
@@ -18,7 +21,12 @@ public class ScheduleRuntimeModule extends AbstractScheduleRuntimeModule {
 	}
 	
 	@Override
-	public Class<? extends IGenerator2> bindIGenerator2() {
-		return ScheduleGenerator.class;
+	public Class<? extends IScopeProvider> bindIScopeProvider() {
+		return ScheduleScopeProvider.class;
+	}
+	
+	@Override
+	public void configureSerializerIScopeProvider(Binder binder) {
+		binder.bind(org.eclipse.xtext.scoping.IScopeProvider.class).annotatedWith(org.eclipse.xtext.serializer.tokens.SerializerScopeProviderBinding.class).to(ScheduleScopeProvider.class);
 	}
 }

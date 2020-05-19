@@ -15,6 +15,7 @@
     <genClasses image="false" ecoreClass="Depot.ecore#//Train">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Depot.ecore#//Train/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Depot.ecore#//Train/coaches"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Depot.ecore#//Train/trainSpeed"/>
     </genClasses>
     <genClasses ecoreClass="Depot.ecore#//IntercityTrain"/>
     <genClasses ecoreClass="Depot.ecore#//RegionalTrain"/>
@@ -26,5 +27,8 @@
     <genClasses ecoreClass="Depot.ecore#//FirstClassPassengerCoach"/>
     <genClasses ecoreClass="Depot.ecore#//SecondClassPassengerCoach"/>
     <genClasses ecoreClass="Depot.ecore#//DiningCoach"/>
+    <genClasses ecoreClass="Depot.ecore#//Depots">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Depot.ecore#//Depots/depots"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

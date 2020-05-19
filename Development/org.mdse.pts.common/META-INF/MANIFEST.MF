@@ -8,8 +8,10 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Automatic-Module-Name: org.mdse.pts.common
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: org.mdse.pts.common,
- org.mdse.pts.common.impl,
+Export-Package: common,
+ common.impl,
+ common.util,
+ org.mdse.pts.common,
  org.mdse.pts.common.util
 Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.core.runtime;bundle-version="3.0.0";visibility:=reexport,

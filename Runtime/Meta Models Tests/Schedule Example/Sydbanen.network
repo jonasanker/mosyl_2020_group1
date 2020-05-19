@@ -3,7 +3,7 @@
   <stations name="Hillerod" legs="//@legs.0 //@legs.1"/>
   <stations name="Holte" legs="//@legs.0 //@legs.1 //@legs.2"/>
   <stations name="Lyngby" legs="//@legs.2"/>
-  <legs name="HillerodEast" distance="12" station1="//@stations.1" station2="//@stations.0"/>
-  <legs name="HillerodWest" distance="10" station1="//@stations.1" station2="//@stations.0"/>
-  <legs name="LyngbyHolte" distance="20" station1="//@stations.2" station2="//@stations.1"/>
+  <legs name="HillerodEast" distance="12" stations="//@stations.1 //@stations.0"/>
+  <legs name="HillerodWest" distance="10" stations="//@stations.1 //@stations.0"/>
+  <legs name="LyngbyHolte" distance="20" stations="//@stations.2 //@stations.1"/>
 </network:Network>

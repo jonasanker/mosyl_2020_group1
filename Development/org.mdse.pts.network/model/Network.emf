@@ -17,23 +17,22 @@ class Network {
 			legs -> forAll(l1 |
 					legs -> forAll(l2 |
 						l1 <> l2 
-						and
-						l1.station1 = l2.station1 and l1.station2 = l2.station2
-						or 
-						l1.station1 = l2.station2 and l1.station2 = l2.station1
+						and l1.stations->first() = l2.stations->first() 
+						and l1.stations->last() = l2.stations->last()
+						or l1.stations->first() = l2.stations->last() 
+						and l1.stations->last() = l2.stations->first()
 						implies
 						l1.name.size() > 0 and l2.name.size() > 0
 					)
 				)")
 class Station {
 	attr String[1] name;
-	ref Leg[*] legs;
+	ref Leg[*]#stations legs;
 }
 
 class Leg {
 	attr String name;
 	attr Integer[1] distance;
-	ref Station[1] station1;
-	ref Station[1] station2;
+	ref Station[2]#legs stations;
 }
 

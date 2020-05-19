@@ -5,11 +5,11 @@ Bundle-SymbolicName: org.mdse.pts.common.editor;singleton:=true
 Automatic-Module-Name: org.mdse.pts.common.editor
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: org.mdse.pts.common.presentation.CommonEditorPlugin$Implementation
+Bundle-Activator: common.presentation.CommonEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: org.mdse.pts.common.presentation
+Export-Package: common.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  org.mdse.pts.common.edit;visibility:=reexport,

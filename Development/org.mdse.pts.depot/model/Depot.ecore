@@ -13,6 +13,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="coaches" lowerBound="1"
         upperBound="-1" eType="#//Coach" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="trainSpeed" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IntercityTrain" eSuperTypes="#//Train"/>
   <eClassifiers xsi:type="ecore:EClass" name="RegionalTrain" eSuperTypes="#//Train"/>
@@ -25,4 +27,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="FirstClassPassengerCoach" eSuperTypes="#//CoachWithId"/>
   <eClassifiers xsi:type="ecore:EClass" name="SecondClassPassengerCoach" eSuperTypes="#//CoachWithId"/>
   <eClassifiers xsi:type="ecore:EClass" name="DiningCoach" eSuperTypes="#//CoachWithId"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Depots">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="depots" upperBound="-1"
+        eType="#//Depot" containment="true"/>
+  </eClassifiers>
 </ecore:EPackage>
