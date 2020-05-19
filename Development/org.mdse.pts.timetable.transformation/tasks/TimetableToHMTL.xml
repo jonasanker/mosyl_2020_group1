@@ -29,7 +29,6 @@
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.codegen.ecore_2.21.0.v20200112-0705.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.codegen_2.19.0.v20190821-1536.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/com.google.guava_27.1.0.v20190517-1946.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.resources_3.13.600.v20191122-2104.jar"/>
     </path>
 
     <path id="org.mdse.pts.timetable.transformation.classpath">

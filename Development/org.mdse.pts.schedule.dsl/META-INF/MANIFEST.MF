@@ -9,6 +9,7 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.0.0",
  org.mdse.pts.schedule,
  org.mdse.pts.timetable,
+ org.mdse.pts.timetable.transformation,
  org.mdse.pts.common,
  org.eclipse.xtext,
  org.eclipse.xtext.xbase,
