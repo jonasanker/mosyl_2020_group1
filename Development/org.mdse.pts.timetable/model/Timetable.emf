@@ -2,7 +2,7 @@
 @namespace(uri="http://mdse.org/pts/timetable", prefix="timetable")
 package timetable;
 
-import "platform:/resource/org.mdse.pts.timetable/model/Common.ecore";
+import "platform:/resource/org.mdse.pts.common/model/Common.ecore";
 
 class Timetable {
 	attr String[1] station;
@@ -12,11 +12,12 @@ class Timetable {
 
 abstract class Entry {
 	attr common.WeekDay[1] weekDay;
-	ref common.Time[1] time;
+	val common.Time[1] time;
 	attr String[1] platform;
 	attr String[1] train;
 }
 
+@GenModel(documentation="constraints for previousStation and nextStation cannot be modeled with OCL, as we don't know timetables for the other stations")
 class Arrival extends Entry {
 	attr String previousStation;
 }

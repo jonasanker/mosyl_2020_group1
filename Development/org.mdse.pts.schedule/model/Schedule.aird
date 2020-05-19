@@ -6,6 +6,7 @@
     <semanticResources>platform:/resource/org.mdse.pts.network/model/Network.ecore</semanticResources>
     <semanticResources>platform:/resource/org.mdse.pts.depot/model/Depot.ecore</semanticResources>
     <semanticResources>platform:/resource/org.mdse.pts.common/model/Common.ecore</semanticResources>
+    <semanticResources>platform:/resource/org.mdse.pts.common/model/Common.genmodel</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_RAktsIAsEeqoq9hxOMlRGw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RuEs4YAsEeqoq9hxOMlRGw" name="schedule class diagram" repPath="#_Rt1cUIAsEeqoq9hxOMlRGw" changeId="cc946040-491a-4657-9473-68c0bdafe39b">

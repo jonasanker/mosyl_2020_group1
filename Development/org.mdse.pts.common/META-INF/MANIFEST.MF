@@ -5,9 +5,13 @@ Bundle-SymbolicName: org.mdse.pts.common;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
+Bundle-Localization: plugin
 Automatic-Module-Name: org.mdse.pts.common
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: org.mdse.pts.common.util
+Export-Package: org.mdse.pts.common.util,
+ common,
+ common.impl,
+ common.util
 Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.core.runtime;bundle-version="3.0.0";visibility:=reexport,
  org.eclipse.core.resources;bundle-version="3.0.0";visibility:=reexport,

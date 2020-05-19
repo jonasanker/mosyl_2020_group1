@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated Timetable -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.mdse.pts.timetable.presentation.TimetableModelWizardID"
+            name="%_UI_TimetableModelWizard_label"
+            class="org.mdse.pts.timetable.presentation.TimetableModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/TimetableModelFile.gif">
+         <description>%_UI_TimetableModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated Timetable -->
+      <editor
+            id="org.mdse.pts.timetable.presentation.TimetableEditorID"
+            name="%_UI_TimetableEditor_label"
+            icon="icons/full/obj16/TimetableModelFile.gif"
+            extensions="timetable"
+            class="org.mdse.pts.timetable.presentation.TimetableEditor"
+            contributorClass="org.mdse.pts.timetable.presentation.TimetableActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

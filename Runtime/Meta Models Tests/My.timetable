@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timetable:Timetable xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:timetable="http://mdse.org/pts/timetable" station="Holte">
+  <arrivals platform="2" train="IC123" previousStation="Virum">
+    <time minutes="30" hours="13"/>
+  </arrivals>
+  <arrivals platform="1" train="IC124" previousStation="Birkerød">
+    <time minutes="40" hours="13"/>
+  </arrivals>
+  <arrivals weekDay="TUESDAY" platform="2" train="IC123" previousStation="Virum">
+    <time minutes="30" hours="13"/>
+  </arrivals>
+  <departures platform="2" train="IC125" nextStation="Virum">
+    <time minutes="45" hours="13"/>
+  </departures>
+  <departures platform="2" train="IC1236" nextStation="Birkerød">
+    <time minutes="45" hours="13"/>
+  </departures>
+</timetable:Timetable>
