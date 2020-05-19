@@ -29,3 +29,4 @@ xtend-gen/
 
 # eclipse files
 .metadata/
+*.xml_gen
