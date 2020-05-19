@@ -7,19 +7,10 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import org.mdse.pts.schedule.Schedule
-import org.mdse.pts.timetable.Timetable
-import org.mdse.pts.schedule.interpreter.ScheduleInterpreter
-import java.util.Map.Entry
-import org.mdse.pts.timetable.Arrival
-import org.mdse.pts.timetable.Departure
+import org.mdse.pts.common.util.EclipseUtil
 import org.mdse.pts.common.util.EcoreIOUtil
-import org.eclipse.core.resources.IFile
-import org.eclipse.core.resources.IWorkspace
-import org.eclipse.core.resources.IWorkspaceRoot
-import org.eclipse.core.resources.IProject
-import org.eclipse.core.resources.IFolder
-import org.eclipse.core.resources.ResourcesPlugin
+import org.mdse.pts.schedule.Schedule
+import org.mdse.pts.schedule.interpreter.ScheduleInterpreter
 
 /**
  * Generates code from your model files on save.
@@ -35,7 +26,7 @@ class ScheduleGenerator extends AbstractGenerator {
 		var interpreter = new ScheduleInterpreter()
 		var schedule = resource.contents.get(0) as Schedule
 		var timetables = interpreter.interpret(schedule)
-		for(String stationName : timetables.keySet()) {
+		/*for(String stationName : timetables.keySet()) {
 			println("-------------")
 			println(stationName)
 			println("arrivals")
@@ -49,8 +40,23 @@ class ScheduleGenerator extends AbstractGenerator {
 			println("-------------")
 			
 
-		  }
-			//EcoreIOUtil.saveModelAs(timetables.get("Hillerod"),".timetable")
+		  }*/
+//		  EcoreIOUtil.s
+
+		//IFile file = null;
+		var project = EclipseUtil.resolveProjectFromResource(resource);
+		var folder = project.getFolder("timetables");
+		
+		//TODO: Do this for all timetables
+		var file = folder.getFile("Hillerod.timetable");
+		EclipseUtil.ensureFolderStructure(file);
+		EcoreIOUtil.saveModelAs(timetables.get("Hillerod"), file);
+		
+		//TODO: get actual HTML code
+		//var html = "Hello World";
+		//EclipseUtil.writeToFile(html, file);
+		
+		EclipseUtil.refreshResource(folder);
 	}
 	
 }

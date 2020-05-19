@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ASCII"?>
+<timetable:Timetable xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:timetable="http://mdse.org/pts/timetable" station="Hillerod">
+  <arrivals weekDay="FRIDAY" platform="1" train="Regio1225">
+    <time hours="11"/>
+  </arrivals>
+  <arrivals weekDay="FRIDAY" platform="1" train="Regio1225">
+    <time minutes="10" hours="11"/>
+  </arrivals>
+  <arrivals weekDay="FRIDAY" platform="1" train="Regio1225">
+    <time minutes="20" hours="11"/>
+  </arrivals>
+  <arrivals weekDay="SATURDAY" platform="2" train="IC912" previousStation="Vejby">
+    <time minutes="21" hours="12"/>
+  </arrivals>
+  <arrivals weekDay="SATURDAY" platform="2" train="IC912" previousStation="Vejby">
+    <time minutes="21" hours="13"/>
+  </arrivals>
+  <arrivals weekDay="SATURDAY" platform="2" train="IC912" previousStation="Vejby">
+    <time minutes="21" hours="14"/>
+  </arrivals>
+  <arrivals weekDay="SUNDAY" platform="2" train="IC912" previousStation="Vejby">
+    <time minutes="21" hours="12"/>
+  </arrivals>
+  <arrivals weekDay="SUNDAY" platform="2" train="IC912" previousStation="Vejby">
+    <time minutes="21" hours="13"/>
+  </arrivals>
+  <arrivals weekDay="SUNDAY" platform="2" train="IC912" previousStation="Vejby">
+    <time minutes="21" hours="14"/>
+  </arrivals>
+  <departures weekDay="FRIDAY" platform="1" train="Regio1225" nextStation="Hillerod">
+    <time hours="11"/>
+  </departures>
+  <departures weekDay="FRIDAY" platform="1" train="Regio1225" nextStation="Hillerod">
+    <time minutes="10" hours="11"/>
+  </departures>
+  <departures weekDay="FRIDAY" platform="1" train="Regio1225" nextStation="Hillerod">
+    <time minutes="20" hours="11"/>
+  </departures>
+  <departures weekDay="SATURDAY" platform="2" train="IC912">
+    <time minutes="21" hours="12"/>
+  </departures>
+  <departures weekDay="SATURDAY" platform="2" train="IC912">
+    <time minutes="21" hours="13"/>
+  </departures>
+  <departures weekDay="SATURDAY" platform="2" train="IC912">
+    <time minutes="21" hours="14"/>
+  </departures>
+  <departures weekDay="SUNDAY" platform="2" train="IC912">
+    <time minutes="21" hours="12"/>
+  </departures>
+  <departures weekDay="SUNDAY" platform="2" train="IC912">
+    <time minutes="21" hours="13"/>
+  </departures>
+  <departures weekDay="SUNDAY" platform="2" train="IC912">
+    <time minutes="21" hours="14"/>
+  </departures>
+</timetable:Timetable>

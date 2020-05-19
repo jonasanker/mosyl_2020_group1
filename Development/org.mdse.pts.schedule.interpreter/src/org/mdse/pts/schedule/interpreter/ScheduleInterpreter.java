@@ -125,8 +125,8 @@ public class ScheduleInterpreter {
 		List<Leg> legs = new ArrayList<>();
 		for(Leg leg : destination.getLegs()) {
 			//I assume station names are unique
-			if((leg.getStation1().getName().equals(origin.getName()) && leg.getStation2().getName().equals(destination.getName())) || 
-				(leg.getStation2().getName().equals(origin.getName()) && leg.getStation1().getName().equals(destination.getName()))) {
+			if((leg.getStations().get(0).getName().equals(origin.getName()) && leg.getStations().get(1).getName().equals(destination.getName())) || 
+				(leg.getStations().get(1).getName().equals(origin.getName()) && leg.getStations().get(0).getName().equals(destination.getName()))) {
 				legs.add(leg);
 			}
 		}
