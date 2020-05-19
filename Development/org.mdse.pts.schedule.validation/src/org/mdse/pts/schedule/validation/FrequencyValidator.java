@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-import org.eclipse.emf.common.util.EList;
 import org.mdse.pts.schedule.Frequency;
 
 public class FrequencyValidator extends BaseValidator {

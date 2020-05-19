@@ -24,6 +24,7 @@ public class ScheduleRuntimeModule extends AbstractScheduleRuntimeModule {
 		return ScheduleScopeProvider.class;
 	}
 	
+	@SuppressWarnings("restriction")
 	@Override
 	public void configureSerializerIScopeProvider(Binder binder) {
 		binder.bind(org.eclipse.xtext.scoping.IScopeProvider.class).annotatedWith(org.eclipse.xtext.serializer.tokens.SerializerScopeProviderBinding.class).to(ScheduleScopeProvider.class);
