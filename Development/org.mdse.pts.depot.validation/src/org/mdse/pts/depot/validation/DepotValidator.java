@@ -65,8 +65,8 @@ public class DepotValidator extends EObjectValidator implements IStartup {
 		boolean hasFirstClass = false;
 		HashSet<Integer> names = new HashSet<Integer>();
 		
-		if (!hasLocomotive(coaches)) modelIsValid &= constraintViolated(train, "Train must have a Locomotive at one of its ends.");
-		if (coaches.size() < 1) return constraintViolated(train, "Trains must have at least 1 coach");
+		if (!hasLocomotive(coaches)) modelIsValid &= constraintViolated(train, train, "Train must have a Locomotive at one of its ends.");
+		if (coaches.size() < 1) return constraintViolated(train, train, "Trains must have at least 1 coach");
 		if (coaches.size() == 1) return modelIsValid;
 		
 		Class<? extends Coach> firstType = null, secondType = null;
@@ -84,20 +84,20 @@ public class DepotValidator extends EObjectValidator implements IStartup {
 		for (int i = 0; i < coaches.size(); i++) {
 			Coach coach = coaches.get(i);
 			if (coach instanceof CoachWithId && !names.add(((CoachWithId)coach).getIdentifier())) {
-				modelIsValid = constraintViolated(train, "Coach ids must be unique within a train.");
+				modelIsValid = constraintViolated(train, coach, "Coach ids must be unique within a train.");
 			}
 			
 			if (coach instanceof DiningCoach) {
 				if (hasDiningCoach) {
-					modelIsValid = constraintViolated(train, "Train must have only 1 DiningCoach.");
+					modelIsValid = constraintViolated(train, coach, "Train must have only 1 DiningCoach.");
 				} if (firstSequenceEnded && secondSequenceStarted) {
-					modelIsValid = constraintViolated(train, "Trains Dining Coach must be placed between First and Second Class Coaches.");
+					modelIsValid = constraintViolated(train, coach, "Trains Dining Coach must be placed between First and Second Class Coaches.");
 				}
 				hasDiningCoach = true;
 			} else if (coach instanceof Locomotive && i != coaches.size() -1 && i != 0) {
-				modelIsValid = constraintViolated(train, "Train can only have a Locomotive at the front or end.");
+				modelIsValid = constraintViolated(train, coach, "Train can only have a Locomotive at the front or end.");
 			} else if (firstType != null && firstType.isAssignableFrom(coach.getClass()) && firstSequenceEnded) {
-				modelIsValid = constraintViolated(train, "Train must not contain more than one sequence, of the same class of Passenger Coach");
+				modelIsValid = constraintViolated(train, coach, "Train must not contain more than one sequence, of the same class of Passenger Coach");
 			} else if (secondType != null && secondType.isAssignableFrom(coach.getClass())){
 				firstSequenceEnded = secondSequenceStarted = true;
 			}
@@ -110,9 +110,9 @@ public class DepotValidator extends EObjectValidator implements IStartup {
 		if (train instanceof RegionalTrain) {
 			return modelIsValid;
 		} if (!hasDiningCoach) {
-			modelIsValid = constraintViolated(train, "IntercityTrain must have a dining coach");
+			modelIsValid = constraintViolated(train, train, "IntercityTrain must have a dining coach");
 		} if (!hasFirstClass) {
-			modelIsValid = constraintViolated(train, "IntercityTrain must have a first class passenger coach");
+			modelIsValid = constraintViolated(train, train, "IntercityTrain must have a first class passenger coach");
 		}
 		return modelIsValid;
 	}
@@ -128,9 +128,9 @@ public class DepotValidator extends EObjectValidator implements IStartup {
 		boolean modelIsValid = true;
 		EList<Train> trains = depot.getTrains();
 		
-		for (int i = 0; i < trains.size(); i++) {
-			modelIsValid &= validateTrain(trains.get(i));
-		}
+		//for (int i = 0; i < trains.size(); i++) {
+		//	modelIsValid &= validateTrain(trains.get(i));
+		//}
 		
 		return modelIsValid && allTrainsHaveUniqueName(trains);
 	}
@@ -141,15 +141,15 @@ public class DepotValidator extends EObjectValidator implements IStartup {
 		
 		for (int i = 0; i < trains.size(); i++) {
 			if (!names.add(trains.get(i).getName())) {
-				modelIsValid &= constraintViolated(trains.get(i), "Train names must be unique");
+				modelIsValid &= constraintViolated(trains.get(i), trains.get(i), "Train names must be unique");
 			}
 		}
 		
 		return modelIsValid;
 	}
 	
-	protected boolean constraintViolated(Train train, String message) {
-		return constraintViolated((EObject)train, train.getName() + ": " + message);
+	protected boolean constraintViolated(Train train, EObject errorObj, String message) {
+		return constraintViolated((EObject)errorObj, train.getName() + ": " + message);
 	}
 	
 	//Utility method from MiniSql Exercise about static semantics

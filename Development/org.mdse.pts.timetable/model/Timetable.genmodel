@@ -7,13 +7,13 @@
     complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
   <foreignModel>Timetable.ecore</foreignModel>
   <genPackages prefix="Timetable" basePackage="org.mdse.pts" disposableProviderFactory="true"
-      ecorePackage="Timetable.ecore#/">
+      childCreationExtenders="true" ecorePackage="Timetable.ecore#/">
     <genClasses ecoreClass="Timetable.ecore#//Timetable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Timetable.ecore#//Timetable/station"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Timetable.ecore#//Timetable/arrivals"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Timetable.ecore#//Timetable/departures"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference Timetable.ecore#//Timetable/arrivals"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference Timetable.ecore#//Timetable/departures"/>
     </genClasses>
-    <genClasses ecoreClass="Timetable.ecore#//Entry">
+    <genClasses image="false" ecoreClass="Timetable.ecore#//Entry">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Timetable.ecore#//Entry/weekDay"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EReference Timetable.ecore#//Entry/time"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Timetable.ecore#//Entry/platform"/>
@@ -29,15 +29,16 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Timetable.ecore#//Timetables/timetables"/>
     </genClasses>
   </genPackages>
-  <genPackages prefix="Common" basePackage="org.mdse.pts" ecorePackage="Common.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Common.ecore#//WeekDay">
-      <genEnumLiterals ecoreEnumLiteral="Common.ecore#//WeekDay/MONDAY"/>
-      <genEnumLiterals ecoreEnumLiteral="Common.ecore#//WeekDay/TUESDAY"/>
-      <genEnumLiterals ecoreEnumLiteral="Common.ecore#//WeekDay/WEDNESDAY"/>
-      <genEnumLiterals ecoreEnumLiteral="Common.ecore#//WeekDay/THURSDAY"/>
-      <genEnumLiterals ecoreEnumLiteral="Common.ecore#//WeekDay/FRIDAY"/>
-      <genEnumLiterals ecoreEnumLiteral="Common.ecore#//WeekDay/SATURDAY"/>
-      <genEnumLiterals ecoreEnumLiteral="Common.ecore#//WeekDay/SUNDAY"/>
+  <genPackages prefix="Common" basePackage="org.mdse.pts" disposableProviderFactory="true"
+      ecorePackage="../../org.mdse.pts.common/model/Common.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="../../org.mdse.pts.common/model/Common.ecore#//WeekDay">
+      <genEnumLiterals ecoreEnumLiteral="../../org.mdse.pts.common/model/Common.ecore#//WeekDay/MONDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="../../org.mdse.pts.common/model/Common.ecore#//WeekDay/TUESDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="../../org.mdse.pts.common/model/Common.ecore#//WeekDay/WEDNESDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="../../org.mdse.pts.common/model/Common.ecore#//WeekDay/THURSDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="../../org.mdse.pts.common/model/Common.ecore#//WeekDay/FRIDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="../../org.mdse.pts.common/model/Common.ecore#//WeekDay/SATURDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="../../org.mdse.pts.common/model/Common.ecore#//WeekDay/SUNDAY"/>
     </genEnums>
     <genClasses ecoreClass="Common.ecore#//Time">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Common.ecore#//Time/minutes"/>
