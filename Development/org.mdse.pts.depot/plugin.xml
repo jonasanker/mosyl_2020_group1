@@ -13,4 +13,11 @@
             class="org.mdse.pts.depot.DepotPackage"
             genModel="model/Depot.genmodel"/>
    </extension>
+   <extension
+         point="org.eclipse.emf.ecore.factory_override">
+      <factory
+            class="org.mdse.pts.depot.custom.DepotFactoryCustom"
+            uri="http://mdse.org/pts/depot">
+      </factory>
+   </extension>
 </plugin>
