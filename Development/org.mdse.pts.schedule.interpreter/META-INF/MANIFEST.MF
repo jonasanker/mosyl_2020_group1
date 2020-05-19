@@ -3,8 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Interpreter
 Bundle-SymbolicName: org.mdse.pts.schedule.interpreter
 Bundle-Version: 1.0.0.qualifier
-Bundle-ClassPath: interpreter.jar,
- Matthias/Desktop/eclipse/plugins/org.eclipse.emf.common_2.18.0.v20191225-1014.jar
+Bundle-ClassPath: interpreter.jar
 Export-Package: org.mdse.pts.schedule.interpreter
 Require-Bundle: org.mdse.pts.schedule;bundle-version="1.0.0",
  org.mdse.pts.timetable;bundle-version="1.0.0"

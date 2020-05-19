@@ -6,17 +6,6 @@
 	<classpathentry kind="src" path="/org.mdse.pts.timetable"/>
 	<classpathentry kind="src" path="/org.mdse.pts.network"/>
 	<classpathentry kind="src" path="/org.mdse.pts.depot"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Matthias/Desktop/eclipse/plugins/org.eclipse.emf.common_2.18.0.v20191225-1014.jar" sourcepath="C:/Users/Matthias/Desktop/eclipse/plugins/org.eclipse.emf.common.source_2.18.0.v20191225-1014.jar">
-		<accessrules>
-			<accessrule kind="accessible" pattern="org/eclipse/emf/common/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/emf/common/archive/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/emf/common/command/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/emf/common/notify/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/emf/common/notify/impl/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/emf/common/util/*"/>
-			<accessrule ignoreifbetter="true" kind="nonaccessible" pattern="**/*"/>
-		</accessrules>
-	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
