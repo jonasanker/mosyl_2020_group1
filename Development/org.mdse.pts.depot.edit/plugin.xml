@@ -7,10 +7,10 @@
 <plugin>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-      <!-- @generated Schedule -->
+      <!-- @generated Depot -->
       <factory
-            uri="http://mdse.org/pts/schedule"
-            class="org.mdse.pts.schedule.provider.ScheduleItemProviderAdapterFactory"
+            uri="http://mdse.org/pts/depot"
+            class="org.mdse.pts.depot.provider.DepotItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider

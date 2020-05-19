@@ -34,31 +34,4 @@
       </editor>
    </extension>
 
-   <extension point="org.eclipse.ui.newWizards">
-      <!-- @generated Schedule -->
-      <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
-            name="%_UI_Wizard_category"/>
-      <wizard
-            id="org.mdse.pts.common.presentation.CommonModelWizardID"
-            name="%_UI_CommonModelWizard_label"
-            class="org.mdse.pts.common.presentation.CommonModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/CommonModelFile.gif">
-         <description>%_UI_CommonModelWizard_description</description>
-         <selection class="org.eclipse.core.resources.IResource"/>
-      </wizard>
-   </extension>
-
-   <extension point="org.eclipse.ui.editors">
-      <!-- @generated Schedule -->
-      <editor
-            id="org.mdse.pts.common.presentation.CommonEditorID"
-            name="%_UI_CommonEditor_label"
-            icon="icons/full/obj16/CommonModelFile.gif"
-            extensions="common"
-            class="org.mdse.pts.common.presentation.CommonEditor"
-            contributorClass="org.mdse.pts.common.presentation.CommonActionBarContributor">
-      </editor>
-   </extension>
 </plugin>
