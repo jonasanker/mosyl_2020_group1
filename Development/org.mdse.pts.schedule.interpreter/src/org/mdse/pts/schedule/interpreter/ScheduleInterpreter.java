@@ -56,7 +56,7 @@ public class ScheduleInterpreter {
 							if(i < routeStops.size()-1) nextStation = stop.getStation();
 							Station station = stop.getStation();
 							
-							int minutes = getRunTimeInMinutes(stop.getVia(), prevStation, station);
+							int minutes = getRunTimeInMinutes(stop.getVia(), prevStation, station, train);
 							
 							nextTime = addMinutesToTime(currentTime, minutes);
 							weekDay = getDay(weekDay, currentTime, nextTime);
@@ -78,7 +78,7 @@ public class ScheduleInterpreter {
 		}
 	}
 	
-	private int getRunTimeInMinutes(Leg via, Station prevStation, Station station) {
+	private int getRunTimeInMinutes(Leg via, Station prevStation, Station station, Train train) {
 		if(prevStation == null) return 0;
 		if(via != null) return via.getDistance();
 		
@@ -86,7 +86,7 @@ public class ScheduleInterpreter {
 		List<Leg> legsToStop = getLegsBetweenStations(prevStation, station);
 		if(legsToStop.size() >= 1) distance = legsToStop.get(0).getDistance(); //if has legs and no via, just take the first
 		else throw new ScheduleInterpreterException("No legs goes to this station! " + station.getName());
-		int minutes = distance / 2; //TODO: train.getSpeed()/60; //(kilometers per minute)
+		int minutes = distance / ((train.getTrainSpeed() / 60)); //(minutes) = (kilometers) / ((kilometers per minute) / (minutes per hour))
 		return minutes;
 	}
 	
