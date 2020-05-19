@@ -5,7 +5,7 @@
     <semanticResources>Depot.genmodel</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_Kx17EJnJEeq3o5h26Y9ASA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_LkQ2gJnJEeq3o5h26Y9ASA" name="depot class diagram" repPath="#_LjZT0JnJEeq3o5h26Y9ASA" changeId="87218ebf-e73d-4f64-8fe4-618ca559d7a2">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_LkQ2gJnJEeq3o5h26Y9ASA" name="depot class diagram" repPath="#_LjZT0JnJEeq3o5h26Y9ASA" changeId="07caa2c9-0ca8-4a29-aac7-de020480e45e">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="Depot.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -502,6 +502,7 @@
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_MP50g5nJEeq3o5h26Y9ASA" description="_MP50gJnJEeq3o5h26Y9ASA" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_MP50hZnJEeq3o5h26Y9ASA" showIcon="false">
           <customFeatures>labelSize</customFeatures>
+          <labelFormat>bold</labelFormat>
         </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_MP50hJnJEeq3o5h26Y9ASA" showIcon="false" labelColor="39,76,114">
           <customFeatures>labelSize</customFeatures>
