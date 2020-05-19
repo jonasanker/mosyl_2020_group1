@@ -13,7 +13,7 @@ class Timetable {
 abstract class Entry {
 	attr common.WeekDay[1] weekDay;
 	val common.Time[1] time;
-	attr String[1] platform;
+	attr int[1] platform;
 	attr String[1] train;
 }
 
