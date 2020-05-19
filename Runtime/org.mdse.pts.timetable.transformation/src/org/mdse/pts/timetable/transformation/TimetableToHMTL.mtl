@@ -1,0 +1,36 @@
+[comment encoding = UTF-8 /]
+[module TimetableToHMTL('http://mdse.org/pts/timetable')/]
+
+[template public TimetableToHMTL(tt: Timetable)]
+	
+	[comment @main /]
+	[file (tt.station.concat('.java'), false, 'UTF-8')]
+		<h1>[tt.station /]</h1>
+		<div style="width: 100%;">
+			<div style="width: 50%; display: inline-block;">
+				<h2>Arrivals</h2>
+				[for (arr: Arrival | tt.arrivals) separator('\n')]
+					[if (i = 0 or tt.arrivals->at(i-1).weekDay <> arr.weekDay)]
+						<h3>[arr.weekDay /]</h3>
+					[/if]
+					<div>
+						[arr.time.hours/]:[arr.time.minutes/] [arr.train/] [if (not arr.previousStation->isEmpty())]from [arr.previousStation/][/if] on platform [arr.platform/]
+					</div>
+				[/for]
+			</div>
+			<div style="width: 50%; display: inline-block;">
+				<h2>Departures</h2>
+					[for (dep: Departure | tt.departures) separator('\n')]
+						[if (i = 0 or tt.arrivals->at(i-1).weekDay <> dep.weekDay)]
+							<h3>[dep.weekDay /]</h3>
+						[/if]
+						<div>
+							[dep.time.hours/]:[dep.time.minutes/] [dep.train/] [if (not dep.nextStation->isEmpty())]to [dep.nextStation/][/if] on platform [dep.platform/]
+						</div>
+					[/for]
+			</div>
+		</div>
+		
+	[/file]
+	
+[/template]
