@@ -1,17 +1,18 @@
+@"http://www.eclipse.org/OCL/Import"(common="platform:/resource/org.mdse.pts.common/model/Common.ecore#/", ecore="http://www.eclipse.org/emf/2002/Ecore")
 @namespace(uri="http://mdse.org/pts/timetable", prefix="timetable")
 package timetable;
 
-import "platform:/resource/org.mdse.pts.common/model/Common.ecore";
+import "platform:/resource/org.mdse.pts.timetable/model/Common.ecore";
 
 class Timetable {
 	attr String[1] station;
-	ref Arrival[*] arrivals;
-	ref Departure[*] departures;
+	val Arrival[*] arrivals;
+	val Departure[*] departures;
 }
 
 abstract class Entry {
 	attr common.WeekDay[1] weekDay;
-	attr EDate[1] time;
+	ref common.Time[1] time;
 	attr String[1] platform;
 	attr String[1] train;
 }
@@ -23,5 +24,4 @@ class Arrival extends Entry {
 class Departure extends Entry {
 	attr String nextStation;
 }
-
 

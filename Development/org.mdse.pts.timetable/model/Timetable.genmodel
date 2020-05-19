@@ -15,7 +15,7 @@
     </genClasses>
     <genClasses ecoreClass="Timetable.ecore#//Entry">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Timetable.ecore#//Entry/weekDay"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Timetable.ecore#//Entry/time"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference Timetable.ecore#//Entry/time"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Timetable.ecore#//Entry/platform"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Timetable.ecore#//Entry/train"/>
     </genClasses>
@@ -25,20 +25,23 @@
     <genClasses ecoreClass="Timetable.ecore#//Departure">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Timetable.ecore#//Departure/nextStation"/>
     </genClasses>
+    <genClasses ecoreClass="Timetable.ecore#//Timetables">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Timetable.ecore#//Timetables/timetables"/>
+    </genClasses>
   </genPackages>
-  <genPackages prefix="Common" basePackage="org.mdse.pts" ecorePackage="../../org.mdse.pts.common/model/Common.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="../../org.mdse.pts.common/model/Common.ecore#//WeekDay">
-      <genEnumLiterals ecoreEnumLiteral="../../org.mdse.pts.common/model/Common.ecore#//WeekDay/MONDAY"/>
-      <genEnumLiterals ecoreEnumLiteral="../../org.mdse.pts.common/model/Common.ecore#//WeekDay/TUESDAY"/>
-      <genEnumLiterals ecoreEnumLiteral="../../org.mdse.pts.common/model/Common.ecore#//WeekDay/WEDNESDAY"/>
-      <genEnumLiterals ecoreEnumLiteral="../../org.mdse.pts.common/model/Common.ecore#//WeekDay/THURSDAY"/>
-      <genEnumLiterals ecoreEnumLiteral="../../org.mdse.pts.common/model/Common.ecore#//WeekDay/FRIDAY"/>
-      <genEnumLiterals ecoreEnumLiteral="../../org.mdse.pts.common/model/Common.ecore#//WeekDay/SATURDAY"/>
-      <genEnumLiterals ecoreEnumLiteral="../../org.mdse.pts.common/model/Common.ecore#//WeekDay/SUNDAY"/>
+  <genPackages prefix="Common" basePackage="org.mdse.pts" ecorePackage="Common.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Common.ecore#//WeekDay">
+      <genEnumLiterals ecoreEnumLiteral="Common.ecore#//WeekDay/MONDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="Common.ecore#//WeekDay/TUESDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="Common.ecore#//WeekDay/WEDNESDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="Common.ecore#//WeekDay/THURSDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="Common.ecore#//WeekDay/FRIDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="Common.ecore#//WeekDay/SATURDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="Common.ecore#//WeekDay/SUNDAY"/>
     </genEnums>
-    <genClasses ecoreClass="../../org.mdse.pts.common/model/Common.ecore#//Time">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.mdse.pts.common/model/Common.ecore#//Time/minutes"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.mdse.pts.common/model/Common.ecore#//Time/hours"/>
+    <genClasses ecoreClass="Common.ecore#//Time">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Common.ecore#//Time/minutes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Common.ecore#//Time/hours"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

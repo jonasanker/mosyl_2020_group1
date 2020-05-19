@@ -9,22 +9,19 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="station" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="arrivals" upperBound="-1"
-        eType="#//Arrival"/>
+        eType="#//Arrival" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="departures" upperBound="-1"
-        eType="#//Departure"/>
+        eType="#//Departure" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Entry" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="weekDay" lowerBound="1"
-        eType="ecore:EEnum ../../org.mdse.pts.common/model/Common.ecore#//WeekDay"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+        eType="ecore:EEnum Common.ecore#//WeekDay"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="time" lowerBound="1" eType="ecore:EClass Common.ecore#//Time"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="platform" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="train" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Arrival" eSuperTypes="#//Entry">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="constraints for previousStation and nextStation cannot be modeled with OCL, as we don't know timetables for the other stations"/>
-    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="previousStation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Departure" eSuperTypes="#//Entry">
