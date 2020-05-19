@@ -27,4 +27,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="FirstClassPassengerCoach" eSuperTypes="#//CoachWithId"/>
   <eClassifiers xsi:type="ecore:EClass" name="SecondClassPassengerCoach" eSuperTypes="#//CoachWithId"/>
   <eClassifiers xsi:type="ecore:EClass" name="DiningCoach" eSuperTypes="#//CoachWithId"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Depots">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="depots" upperBound="-1"
+        eType="#//Depot" containment="true"/>
+  </eClassifiers>
 </ecore:EPackage>
