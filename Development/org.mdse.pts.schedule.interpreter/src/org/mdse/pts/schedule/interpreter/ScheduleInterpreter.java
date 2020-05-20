@@ -7,6 +7,7 @@ import org.mdse.pts.schedule.Stop;
 import org.mdse.pts.schedule.TrainSchedule;
 import org.mdse.pts.timetable.Arrival;
 import org.mdse.pts.timetable.Departure;
+import org.mdse.pts.timetable.Entry;
 import org.mdse.pts.timetable.Timetable;
 import org.mdse.pts.timetable.TimetableFactory;
 
@@ -90,32 +91,35 @@ public class ScheduleInterpreter {
 		List<Leg> legsBetweenStations = getLegsBetweenStations(prevStation, station);
 		
 		if(via != null) distance = via.getDistance();
-		else if(legsBetweenStations.size() >= 1) distance = legsBetweenStations.get(0).getDistance(); //if has legs and no via, just take the first
+		//if has legs and no via, just take the first
+		else if(legsBetweenStations.size() >= 1) distance = legsBetweenStations.get(0).getDistance(); 
 		else throw new ScheduleInterpreterException("No legs goes to this station! " + station.getName());
 		
-		int minutes = distance / ((train.getTrainSpeed() / 60)); //(minutes) = (kilometers) / ((kilometers per minute) / (minutes per hour))
+		//(minutes) = (kilometers) / ((kilometers per minute) / (minutes per hour))
+		int minutes = distance / ((train.getTrainSpeed() / 60)); 
 		
 		return minutes;
 	}
 	
 	private void addDeparture(HashMap<String, Timetable> timetables, Station station, Station nextStation, Time currentTime, WeekDay day, Train train, int platform) {
 		Departure departure = TimetableFactory.eINSTANCE.createDeparture();
-		departure.setPlatform(platform);
+		setTimetableEntryInfo(departure, platform, currentTime, day, train);
 		departure.setNextStation(nextStation != null ? nextStation.getName() : null);
-		departure.setTime(currentTime);
-		departure.setWeekDay(day);
-		departure.setTrain(train.getName());
 		timetables.get(station.getName()).getDepartures().add(departure);
 	}
 
 	private void addArrival(HashMap<String,Timetable> timetables, Station station, Station prevStation, Time currentTime, WeekDay day, Train train, int platform) {
 		Arrival arrival = TimetableFactory.eINSTANCE.createArrival();
-		arrival.setPlatform(platform);
+		setTimetableEntryInfo(arrival, platform, currentTime, day, train);
 		arrival.setPreviousStation(prevStation != null ? prevStation.getName() : null);
-		arrival.setTime(currentTime);
-		arrival.setWeekDay(day);
-		arrival.setTrain(train.getName());
 		timetables.get(station.getName()).getArrivals().add(arrival);
+	}
+	
+	private void setTimetableEntryInfo(Entry entry, int platform, Time currentTime, WeekDay day, Train train) {
+		entry.setPlatform(platform);
+		entry.setTime(currentTime);
+		entry.setWeekDay(day);
+		entry.setTrain(train.getName());
 	}
 
 	private HashMap<String,Timetable> createTimetables(EList<Station> stations) {
@@ -133,8 +137,10 @@ public class ScheduleInterpreter {
 		List<Leg> legs = new ArrayList<>();
 		for(Leg leg : destination.getLegs()) {
 			//I assume station names are unique
-			if((leg.getStations().get(0).getName().equals(origin.getName()) && leg.getStations().get(1).getName().equals(destination.getName())) || 
-				(leg.getStations().get(1).getName().equals(origin.getName()) && leg.getStations().get(0).getName().equals(destination.getName()))) {
+			String legStartStationName = leg.getStations().get(0).getName();
+			String legEndStationName = leg.getStations().get(1).getName();
+			if((legStartStationName.equals(origin.getName()) && legEndStationName.equals(destination.getName())) || 
+				(legEndStationName.equals(origin.getName()) && legStartStationName.equals(destination.getName()))) {
 				legs.add(leg);
 			}
 		}
