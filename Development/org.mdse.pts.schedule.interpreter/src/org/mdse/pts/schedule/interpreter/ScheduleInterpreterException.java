@@ -2,6 +2,8 @@ package org.mdse.pts.schedule.interpreter;
 
 public class ScheduleInterpreterException extends RuntimeException {
 
+	private static final long serialVersionUID = 2051214937588883312L;
+
 	public ScheduleInterpreterException() {
 		// TODO Auto-generated constructor stub
 	}

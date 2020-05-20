@@ -3,7 +3,6 @@
  */
 package org.mdse.pts.schedule.dsl;
 
-import org.eclipse.xtext.generator.IGenerator2;
 import org.eclipse.xtext.linking.ILinkingService;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.mdse.pts.schedule.dsl.linking.ScheduleLinkingService;
