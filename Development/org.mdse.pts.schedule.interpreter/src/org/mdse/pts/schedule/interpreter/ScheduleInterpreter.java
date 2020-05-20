@@ -2,7 +2,6 @@ package org.mdse.pts.schedule.interpreter;
 
 import org.mdse.pts.schedule.DepartureDay;
 import org.mdse.pts.schedule.Frequency;
-import org.mdse.pts.schedule.Route;
 import org.mdse.pts.schedule.Schedule;
 import org.mdse.pts.schedule.Stop;
 import org.mdse.pts.schedule.TrainSchedule;
@@ -16,9 +15,7 @@ import org.mdse.pts.common.Time;
 import org.mdse.pts.common.WeekDay;
 
 import org.mdse.pts.network.Leg;
-import org.mdse.pts.network.Network;
 import org.mdse.pts.network.Station;
-import org.mdse.pts.depot.Depot;
 import org.mdse.pts.depot.Train;
 
 import java.util.ArrayList;
@@ -30,9 +27,17 @@ import org.eclipse.emf.common.util.EList;
 public class ScheduleInterpreter {
 	public HashMap<String,Timetable> interpret(Schedule schedule) {
 		EList<Station> stations = schedule.getNetwork().getStations();
+		
 		HashMap<String,Timetable> timetables = createTimetables(stations);
+		
 		EList<TrainSchedule> trainSchedules = schedule.getTrainschedules();
+		
 		interpretTrainSchedules(trainSchedules, stations, timetables);
+		
+		for(String stationName : timetables.keySet()) {
+			timetables.get(stationName).getArrivals().sort(new TimetableEntryComparator());
+			timetables.get(stationName).getDepartures().sort(new TimetableEntryComparator());
+		}
 		
 		return timetables;
 	}
