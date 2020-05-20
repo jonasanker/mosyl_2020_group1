@@ -80,13 +80,16 @@ public class ScheduleInterpreter {
 	
 	private int getRunTimeInMinutes(Leg via, Station prevStation, Station station, Train train) {
 		if(prevStation == null) return 0;
-		if(via != null) return via.getDistance();
 		
 		int distance = 0;
-		List<Leg> legsToStop = getLegsBetweenStations(prevStation, station);
-		if(legsToStop.size() >= 1) distance = legsToStop.get(0).getDistance(); //if has legs and no via, just take the first
+		List<Leg> legsBetweenStations = getLegsBetweenStations(prevStation, station);
+		
+		if(via != null) distance = via.getDistance();
+		else if(legsBetweenStations.size() >= 1) distance = legsBetweenStations.get(0).getDistance(); //if has legs and no via, just take the first
 		else throw new ScheduleInterpreterException("No legs goes to this station! " + station.getName());
+		
 		int minutes = distance / ((train.getTrainSpeed() / 60)); //(minutes) = (kilometers) / ((kilometers per minute) / (minutes per hour))
+		
 		return minutes;
 	}
 	
