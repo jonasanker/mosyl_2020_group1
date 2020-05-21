@@ -67,7 +67,7 @@ public class ScheduleInterpreter {
 			Stop stop = routeStops.get(i);
 			
 			Station nextStation = null;
-			if(i < routeStops.size()-1) nextStation = stop.getStation();
+			if(i < routeStops.size()-1) nextStation = routeStops.get(i+1).getStation();
 			Station station = stop.getStation();
 			
 			int runTimeMinutes = getRunTimeInMinutes(stop.getVia(), prevStation, station, train);
