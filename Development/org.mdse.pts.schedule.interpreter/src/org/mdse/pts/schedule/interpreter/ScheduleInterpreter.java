@@ -11,7 +11,6 @@ import org.mdse.pts.timetable.Entry;
 import org.mdse.pts.timetable.Timetable;
 import org.mdse.pts.timetable.TimetableFactory;
 
-import org.mdse.pts.common.CommonFactory;
 import org.mdse.pts.common.Time;
 import org.mdse.pts.common.WeekDay;
 
@@ -29,58 +28,70 @@ public class ScheduleInterpreter {
 	public HashMap<String,Timetable> interpret(Schedule schedule) {
 		EList<Station> stations = schedule.getNetwork().getStations();
 		
-		HashMap<String,Timetable> timetables = createTimetables(stations);
+		HashMap<String,Timetable> timetables = createEmptyTimetables(stations);
 		
 		EList<TrainSchedule> trainSchedules = schedule.getTrainschedules();
 		
-		interpretTrainSchedules(trainSchedules, stations, timetables);
+		interpretTrainSchedules(trainSchedules, timetables);
 		
-		for(String stationName : timetables.keySet()) {
-			timetables.get(stationName).getArrivals().sort(new TimetableEntryComparator());
-			timetables.get(stationName).getDepartures().sort(new TimetableEntryComparator());
-		}
+		sortTimetableEntries(timetables);
 		
 		return timetables;
 	}
 	
-	private void interpretTrainSchedules(EList<TrainSchedule> trainSchedules, EList<Station> stations, HashMap<String, Timetable> timetables) {
-		for(TrainSchedule trainSchedule : trainSchedules) {
-			EList<Frequency> frequencies = trainSchedule.getFrequencies();
-			EList<Stop> routeStops = trainSchedule.getRoute().getStops();
-			Train train = trainSchedule.getTrain();
-			for(Frequency frequency : frequencies) {
-				for(DepartureDay day : frequency.getDay()) {
-					for(Time time : frequency.getTime()) {
-						Station prevStation = null;
-						Time currentTime = time;
-						Time nextTime = time;
-						WeekDay weekDay = day.getWeekday();
-						for(int i = 0; i < routeStops.size(); i++) {
-							Stop stop = routeStops.get(i);
-							
-							Station nextStation = null;
-							if(i < routeStops.size()-1) nextStation = stop.getStation();
-							Station station = stop.getStation();
-							
-							int minutes = getRunTimeInMinutes(stop.getVia(), prevStation, station, train);
-							
-							nextTime = addMinutesToTime(currentTime, minutes);
-							weekDay = getDay(weekDay, currentTime, nextTime);
-							currentTime = nextTime;
-							addArrival(timetables, station, prevStation, currentTime, weekDay, train, stop.getPlatform());
-							
-							nextTime = addMinutesToTime(currentTime, stop.getDuration());
-							weekDay = getDay(weekDay, currentTime, nextTime);
-							currentTime = nextTime;
-							addDeparture(timetables, station, nextStation, currentTime, weekDay, train, stop.getPlatform());
-							
-							prevStation = station;
-						}
-					}
-				}
-				
+	private void interpretTrainSchedules(EList<TrainSchedule> trainSchedules, HashMap<String, Timetable> timetables) {
+		for(TrainSchedule trainSchedule : trainSchedules) interpretTrainSchedule(trainSchedule, timetables);
+	}
+	
+	private void interpretTrainSchedule(TrainSchedule trainSchedule, HashMap<String, Timetable> timetables) {
+		EList<Frequency> frequencies = trainSchedule.getFrequencies();
+		EList<Stop> routeStops = trainSchedule.getRoute().getStops();
+		Train train = trainSchedule.getTrain();
+		for(Frequency frequency : frequencies) interpretFrequency(frequency, routeStops, train, timetables);
+	}
+	
+	private void interpretFrequency(Frequency frequency, EList<Stop> routeStops, Train train, HashMap<String, Timetable> timetables) {
+		for(DepartureDay day : frequency.getDay()) {
+			for(Time time : frequency.getTime()) {
+				interpretRoute(routeStops, time, day, train, timetables);
 			}
+		}
+	}
+	
+	private void interpretRoute(EList<Stop> routeStops, Time time, DepartureDay day, Train train, HashMap<String, Timetable> timetables) {
+		Station prevStation = null;
+		Time currentTime = time;
+		Time nextTime = time;
+		WeekDay weekDay = day.getWeekday();
+		for(int i = 0; i < routeStops.size(); i++) {
+			Stop stop = routeStops.get(i);
 			
+			Station nextStation = null;
+			if(i < routeStops.size()-1) nextStation = stop.getStation();
+			Station station = stop.getStation();
+			
+			int runTimeMinutes = getRunTimeInMinutes(stop.getVia(), prevStation, station, train);
+			
+			nextTime = TimeUtilities.addMinutesToTime(currentTime, runTimeMinutes);
+			weekDay = WeekDayUtilities.getDay(weekDay, currentTime, nextTime);
+			currentTime = nextTime;
+			addArrival(timetables, station, prevStation, currentTime, weekDay, train, stop.getPlatform());
+			
+			int stopTimeMinutes = stop.getDuration();
+			
+			nextTime = TimeUtilities.addMinutesToTime(currentTime, stopTimeMinutes);
+			weekDay = WeekDayUtilities.getDay(weekDay, currentTime, nextTime);
+			currentTime = nextTime;
+			addDeparture(timetables, station, nextStation, currentTime, weekDay, train, stop.getPlatform());
+			
+			prevStation = station;
+		}
+	}
+	
+	private void sortTimetableEntries(HashMap<String, Timetable> timetables) {
+		for(String stationName : timetables.keySet()) {
+			timetables.get(stationName).getArrivals().sort(new TimetableEntryComparator());
+			timetables.get(stationName).getDepartures().sort(new TimetableEntryComparator());
 		}
 	}
 	
@@ -92,7 +103,8 @@ public class ScheduleInterpreter {
 		
 		if(via != null) distance = via.getDistance();
 		//if has legs and no via, just take the first
-		else if(legsBetweenStations.size() >= 1) distance = legsBetweenStations.get(0).getDistance(); 
+		else if(legsBetweenStations.size() >= 1) distance = legsBetweenStations.get(0).getDistance();
+		//if there is no legs between two stations on the route, something is wrong
 		else throw new ScheduleInterpreterException("No legs goes to this station! " + station.getName());
 		
 		//(minutes) = (kilometers) / ((kilometers per minute) / (minutes per hour))
@@ -122,7 +134,7 @@ public class ScheduleInterpreter {
 		entry.setTrain(train.getName());
 	}
 
-	private HashMap<String,Timetable> createTimetables(EList<Station> stations) {
+	private HashMap<String,Timetable> createEmptyTimetables(EList<Station> stations) {
 		HashMap<String,Timetable> timetables = new HashMap<>();
 		for(int i = 0; i < stations.size(); i++) {
 			Station station = stations.get(i);
@@ -145,50 +157,5 @@ public class ScheduleInterpreter {
 			}
 		}
 		return legs;
-	}
-	
-	private Time addMinutesToTime(Time time, int minutes) {
-		//I assume that no trip between neighboring stations will be >= 24h
-		int fullDayMinutes = 1440;
-		int resultingMinutes = timeToMinutes(time)+minutes;
-		if(resultingMinutes >= fullDayMinutes) resultingMinutes -= 1440; //if >= 24h, reset time to beginning of day
-		return minutesToTime(resultingMinutes);
-	}
-	
-	private int timeToMinutes(Time time) {
-		return time.getHours()*60 + time.getMinutes();
-	}
-	
-	private Time minutesToTime(int minutes) {
-		Time time = CommonFactory.eINSTANCE.createTime();
-		time.setHours(minutes/60);
-		time.setMinutes(minutes%60);
-		return time;
-	}
-	
-	private WeekDay getDay(WeekDay day, Time lastTime, Time nextTime) {
-		if(timeToMinutes(nextTime) < timeToMinutes(lastTime)) return getNextDay(day);
-		return day;
-	}
-	
-	private WeekDay getNextDay(WeekDay day) {
-		switch(day) {
-		case FRIDAY:
-			return WeekDay.SATURDAY;
-		case MONDAY:
-			return WeekDay.TUESDAY;
-		case SATURDAY:
-			return WeekDay.SUNDAY;
-		case SUNDAY:
-			return WeekDay.MONDAY;
-		case THURSDAY:
-			return WeekDay.FRIDAY;
-		case TUESDAY:
-			return WeekDay.WEDNESDAY;
-		case WEDNESDAY:
-			return WeekDay.THURSDAY;
-		default:
-			return WeekDay.MONDAY;
-		}
 	}
 }
