@@ -2,14 +2,13 @@
 [module TimetableToHMTL('http://mdse.org/pts/timetable')/]
 
 [template public TimetableToHMTL(tt: Timetable)]
-	
 	[comment @main /]
 	[file (tt.station.concat('.html'), false, 'UTF-8')]
-	<html>
-		<head>
-			<title>Timetable for [tt.station /]</title>
-		</head>
-		<body style="font-family: arial;">
+		<html>
+			<head>
+				<title>Timetable for [tt.station /]</title>
+			</head>
+			<body style="font-family: arial;">
 				<h1>[tt.station /]</h1>
 				<div style="width: 100%; display: flex;">
 					<div style="width: 50%;">
@@ -39,9 +38,7 @@
 						[/for]
 					</div>
 				</div>
-		</body>
-	</html>
-		
+			</body>
+		</html>
 	[/file]
-	
 [/template]
