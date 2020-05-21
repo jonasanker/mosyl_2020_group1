@@ -33,16 +33,10 @@ class ScheduleGenerator extends AbstractGenerator {
 		var schedule = resource.contents.get(0) as Schedule
 		var timetables = interpreter.interpret(schedule)
 		for(String stationName : timetables.keySet()) {
-			var file = folder.getFile(stationName + ".timetable")
-			EclipseUtil.ensureFolderStructure(file)
 			var timetable = timetables.get(stationName)
-			EcoreIOUtil.saveModelAs(timetable, file)
 			var generator = new TimetableToHMTL(timetable, javaFolder, arguments)
 			generator.doGenerate(new BasicMonitor())
 		  }
-		
-		//TODO: get actual HTML code
-		//EclipseUtil.writeToFile(html, file);
 		
 		EclipseUtil.refreshResource(folder);
 	}
