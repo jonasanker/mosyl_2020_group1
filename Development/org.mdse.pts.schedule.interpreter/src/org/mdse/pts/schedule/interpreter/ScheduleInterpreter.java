@@ -107,7 +107,7 @@ public class ScheduleInterpreter {
 		//if there is no legs between two stations on the route, something is wrong
 		else throw new ScheduleInterpreterException("No legs goes to this station! " + station.getName());
 		
-		//(minutes) = (kilometers) / ((kilometers per minute) / (minutes per hour))
+		//(minutes) = (kilometers) / ((kilometers per hour) / (minutes per hour))
 		int minutes = distance / ((train.getTrainSpeed() / 60)); 
 		
 		return minutes;
