@@ -6,9 +6,9 @@
       <defaultLayer name="Outer">
         <containerMappings name="DepotContainer" semanticCandidatesExpression="var:self" domainClass="depot::Depot" childrenPresentation="VerticalStack">
           <subNodeMappings name="DepotNode" semanticCandidatesExpression="feature:eAllContents" domainClass="depot::Depot"/>
-          <subContainerMappings name="TrainContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="depot::Train" childrenPresentation="HorizontalStack">
+          <subContainerMappings name="TrainContainer" labelDirectEdit="//@ownedViewpoints[name='Depot%20Viewpoint']/@ownedRepresentations[name='Depot%20Diagram%20Representation']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Train%20Name']" semanticCandidatesExpression="feature:eAllContents" domainClass="depot::Train" childrenPresentation="HorizontalStack">
             <subNodeMappings name="TrainNode" semanticCandidatesExpression="feature:eAllContents" domainClass="depot::Train"/>
-            <subContainerMappings name="CoachContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="depot::Coach">
+            <subContainerMappings name="CoachContainer" labelDirectEdit="//@ownedViewpoints[name='Depot%20Viewpoint']/@ownedRepresentations[name='Depot%20Diagram%20Representation']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Coach%20Id']" semanticCandidatesExpression="feature:eAllContents" domainClass="depot::Coach">
               <subNodeMappings name="CoachNode" semanticCandidatesExpression="feature:eAllContents" domainClass="depot::Coach"/>
               <conditionnalStyles predicateExpression="[self.oclIsTypeOf(Locomotive) and container.oclAsType(Train).coaches->indexOf(self) = 1/]">
                 <style xsi:type="style:WorkspaceImageDescription" labelSize="12" labelExpression="" hideLabelByDefault="true" workspacePath="/org.mdse.pts.depot.dsl/symbols/LocomotiveLeading.png">
@@ -112,6 +112,18 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="depot::SecondClassPassengerCoach" referenceName="coaches"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Edit Train Name" label="Edit Train Name">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Edit Coach Id">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="identifier" valueExpression="var:0"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
