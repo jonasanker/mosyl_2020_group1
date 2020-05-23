@@ -36,11 +36,9 @@ public class DepotValidator extends EObjectValidator implements IStartup {
 		this.diagnostics = diagnostics;
 		if (DepotPackage.eINSTANCE.getDepot().equals(eClass)) {
 			modelIsValid &= validateDepot((Depot)eObject);
-		} else if (DepotPackage.eINSTANCE.getTrain().equals(eClass)) {
-			modelIsValid &= validateTrain((Train)eObject);
-		} else if (DepotPackage.eINSTANCE.getIntercityTrain().equals(eClass)) {
-			modelIsValid &= validateTrain((Train)eObject);
-		} else if (DepotPackage.eINSTANCE.getRegionalTrain().equals(eClass)) {
+		} else if (DepotPackage.eINSTANCE.getTrain().equals(eClass)
+				|| DepotPackage.eINSTANCE.getIntercityTrain().equals(eClass)
+				|| DepotPackage.eINSTANCE.getRegionalTrain().equals(eClass)) {
 			modelIsValid &= validateTrain((Train)eObject);
 		}
 		
@@ -127,10 +125,6 @@ public class DepotValidator extends EObjectValidator implements IStartup {
 	protected boolean validateDepot(Depot depot) {
 		boolean modelIsValid = true;
 		EList<Train> trains = depot.getTrains();
-		
-		//for (int i = 0; i < trains.size(); i++) {
-		//	modelIsValid &= validateTrain(trains.get(i));
-		//}
 		
 		return modelIsValid && allTrainsHaveUniqueName(trains);
 	}
