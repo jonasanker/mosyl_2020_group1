@@ -21,29 +21,8 @@ Frequency:
 	"on" day+=DepartureDay ("," day+=DepartureDay)* "at" time+=Time ("," time+=Time)*
 ;
 
-Time returns common::Time:
-	hours=INT ':' minutes=INT;
-
-DepartureDay:
-	weekday=WeekDay
-;
-
-enum WeekDay returns common::WeekDay:
-	MONDAY = 'MONDAY' | 
-	TUESDAY = 'TUESDAY' | 
-	WEDNESDAY = 'WEDNESDAY' | 
-	THURSDAY = 'THURSDAY' | 
-	FRIDAY = 'FRIDAY' | 
-	SATURDAY = 'SATURDAY' | 
-	SUNDAY = 'SUNDAY'
-;
-
 Route:
 	stops+=StartStop ("," stops+=IntermediateStop)* ("," stops+=TerminateStop)
-;
-
-Stop:
-	StartStop | IntermediateStop | TerminateStop
 ;
 
 StartStop returns Stop:
@@ -59,4 +38,21 @@ IntermediateStop returns Stop:
 TerminateStop returns Stop:
 	("drive" "via" via=[network::Leg])?
 	"terminate" "at" station=[network::Station] "on" "platform" platform=INT
+;
+
+Time returns common::Time:
+	hours=INT ':' minutes=INT;
+
+DepartureDay:
+	weekday=WeekDay
+;
+
+enum WeekDay returns common::WeekDay:
+	MONDAY = 'MONDAY' | 
+	TUESDAY = 'TUESDAY' | 
+	WEDNESDAY = 'WEDNESDAY' | 
+	THURSDAY = 'THURSDAY' | 
+	FRIDAY = 'FRIDAY' | 
+	SATURDAY = 'SATURDAY' | 
+	SUNDAY = 'SUNDAY'
 ;
