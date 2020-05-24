@@ -3,8 +3,8 @@
 package depot;
 
 class Depot {
-	val Train[*] trains;
-	attr String[1] name;
+  val Train[*] trains;
+  attr String[1] name;
 }
 
 abstract class Train {
@@ -26,7 +26,7 @@ class Locomotive extends Coach {
 }
 
 abstract class CoachWithId extends Coach {
-	attr int[1] identifier;
+  attr int[1] identifier;
 }
 
 class FirstClassPassengerCoach extends CoachWithId {
@@ -36,9 +36,5 @@ class SecondClassPassengerCoach extends CoachWithId {
 }
 
 class DiningCoach extends CoachWithId {
-}
-
-class Depots {
-	val Depot[*] depots;
 }
 
