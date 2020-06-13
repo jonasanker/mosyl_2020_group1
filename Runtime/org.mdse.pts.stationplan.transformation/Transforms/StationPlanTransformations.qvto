@@ -14,8 +14,8 @@ mapping StationPlan::StationPlan2Network() : Network {
 }
 
 mapping TrainStation::TrainStation2Station() : Station {
-	legs += self.incomingConnections->Connection2Leg();
-	legs += self.outgoingConnections->Connection2Leg();
+	legs += self.incomingConnections.resolveone(MMNetwork::Leg);
+	legs += self.outgoingConnections.resolveone(MMNetwork::Leg);
 	name := self.identifier;
 	
 }
@@ -23,6 +23,6 @@ mapping TrainStation::TrainStation2Station() : Station {
 mapping Connection::Connection2Leg() : Leg {
 	name := self.identifier;
 	distance := self.distanceInMeters.div(1000);
-	stations += self.sourceStation.map TrainStation2Station();
-	stations += self.targetStation.map TrainStation2Station();
+	stations += self.sourceStation.resolveone(MMNetwork::Station);
+	stations += self.targetStation.resolveone(MMNetwork::Station);
 }
